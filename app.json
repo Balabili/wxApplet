@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/businessDetails/businessDetails",
+    "pages/order/order",
+    "pages/settleAccount/settleAccount"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "天使超市",
+    "navigationBarTextStyle": "black"
+  }
+}

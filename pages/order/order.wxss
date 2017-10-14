@@ -1,0 +1,110 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 250rpx;
+  width: 100%;
+  border-bottom: 4rpx solid #f5f5f5;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.task-bar {
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.tab {
+  display: inline-block;
+  height: 74rpx;
+  margin-left: 200rpx;
+  font-size: 34rpx;
+}
+
+.active-tab {
+  color: #7a7afc;
+  border-bottom: 4rpx solid #7a7afc;
+}
+
+.order-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  height: 200rpx;
+}
+
+.order-container>image {
+  margin-left: 30rpx;
+  height: 150rpx;
+  width: 20%;
+}
+
+.order-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10rpx 30rpx;
+  height: 178rpx;
+  width: 80%;
+  border-bottom: 2rpx solid #ededed;
+}
+
+.order-details-header {
+  display: flex;
+  justify-content: space-between;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.order-details-title {
+  display: inline-block;
+  font-size: 32rpx;
+}
+
+.order-details-status {
+  font-size: 24rpx;
+  color: #959595;
+}
+
+.color-orange {
+  color: #fe484a;
+}
+
+.order-details-order-time {
+  font-size: 24rpx;
+  color: #959595;
+}
+
+.order-details-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.order-detail-oparation {
+  padding: 5rpx 30rpx;
+  font-size: 32rpx;
+  border-radius: 8rpx;
+}
+
+.order-detail-again {
+  height: 46rpx;
+  line-height: 46rpx;
+  border: 2rpx solid #7a80fa;
+  color: #7a80fa;
+}
+
+.order-detail-pay-now {
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #7a80fa;
+  color: #fff;
+}

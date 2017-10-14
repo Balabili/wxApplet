@@ -1,0 +1,144 @@
+/**app.wxss**/
+
+page {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 商家模板start */
+
+.shop-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 160rpx;
+}
+
+.shop-details {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.shop-details image {
+  height: 150rpx;
+  width: 150rpx;
+}
+
+.shop-details-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20rpx;
+  height: 100%;
+}
+
+.shop-details-header {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+}
+
+.shop-details-status {
+  display: inline-block;
+  height: 45rpx;
+  line-height: 45rpx;
+  border-radius: 8rpx;
+  margin-left: 20rpx;
+  font-size: 22rpx;
+  padding: 0 15rpx;
+}
+
+.shop-details-status-active {
+  background-color: #f0f2fd;
+  color: #a9a5f5;
+}
+
+.shop-details-status-deactive {
+  background-color: #fff1ec;
+  color: #fa8b83;
+}
+
+.shop-details-comment {
+  color: #ff6d5e;
+  font-size: 28rpx;
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shop-details-dispath {
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #a7a7a7;
+  font-size: 28rpx;
+}
+
+.shop-details-dispath-servered {
+  margin: 0 20rpx;
+  color: #eaeaea;
+}
+
+.shop-details-icon {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.shop-notice-container {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.shop-notice {
+  display: inline-block;
+  padding: 0 15rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  border-radius: 8rpx;
+  color: #fff;
+  font-size: 22rpx;
+  background-color: #ff6d5e;
+}
+
+.shop-notice-details {
+  margin-left: 20rpx;
+  width: 500rpx;
+  color: #a9a9a9;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 商家详情end */
+
+/* 商品价格start */
+
+.rmb {
+  font-size: 28rpx;
+  color: #fe484a;
+}
+
+.commodity-price {
+  font-size: 40rpx;
+  color: #fe484a;
+}
+
+/* 商品价格end */

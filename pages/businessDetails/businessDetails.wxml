@@ -1,0 +1,30 @@
+<import src="../index/index.wxml" />
+
+<view class='container' style='background-color:#F5F5F5;'>
+  <view class='header'>
+    <template is="shopDetails" data="{{...shop}}" />
+  </view>
+  <view class='shop-timeline'>
+    <view class='field-container'>
+      <text class='field-key'>配送时段</text>
+      <text class='field-value'>9:00 - 20:00</text>
+    </view>
+    <view class='field-container'>
+      <text class='field-key'>营业时段</text>
+      <text class='field-value'>8:00 - 22:00</text>
+    </view>
+  </view>
+  <view class='shop-address'>
+    <view class='field-container'>
+      <text class='field-key'>联系人</text>
+      <text class='field-value'>你大爷</text>
+    </view>
+    <view class='field-container'>
+      <text class='field-key'>商家地址</text>
+      <text class='field-value'>中国中国中国中国中国中国中国中国中国中国中国中国中国中国中国中国中国中国中国中国</text>
+    </view>
+  </view>
+  <view class='shop-backstage'>
+    <text>进入商家后台</text>
+  </view>
+</view>

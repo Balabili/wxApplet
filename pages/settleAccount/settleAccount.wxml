@@ -1,0 +1,14 @@
+<view class="container" style="background-color:#F5F5F5;">
+  <block wx:if="">
+    <view></view>
+  </block>
+  <block wx:else>
+    <view class='add-address-container'>
+      <view class='add-address'>
+        <text class='add-address-icon'>+</text>
+        <text class='add-address-text'>新增收货地址</text>
+      </view>
+      <image src="../../images/四月是你的谎言.jpg"></image>
+    </view>
+  </block>
+</view>

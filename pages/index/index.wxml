@@ -1,0 +1,91 @@
+<template name="shopDetails">
+  <view class='shop-details-container' bindtap='viewShopDetails'>
+    <view class='shop-details'>
+      <image src='../../images/四月是你的谎言.jpg'></image>
+      <view class='shop-details-body'>
+        <view class='shop-details-header'>
+          <text class='shop-details-title'>天使超市</text>
+          <text class="shop-details-status {{shopStatus?'shop-details-status-active':'shop-details-status-deactive'}}">{{shopStatus?'营业中':'打烊了'}}</text>
+        </view>
+        <text class='shop-details-comment'>21:00后不送货，请自取00后不送货，请自取</text>
+        <view class='shop-details-dispath'>
+          <text>￥20起送</text>
+          <text class='shop-details-dispath-servered'>|</text>
+          <text>40分钟送达</text>
+        </view>
+      </view>
+    </view>
+    <image class='shop-details-icon' src='../../images/四月是你的谎言.jpg'></image>
+  </view>
+  <view class='shop-notice-container'>
+    <text class='shop-notice'>公告</text>
+    <text class='shop-notice-details'>{{notice}}</text>
+  </view>
+</template>
+
+<template name="commodityDetails">
+  <view class='commodity-details' data-id='{{id}}' catchtap='commodityOperate'>
+    <image src='{{img}}'></image>
+    <view class='commodity-description'>
+      <text class='commodity-title'>{{name}}</text>
+      <view>
+        <text class='commodity-weightage'>{{weightage}}</text>
+        <view class='commodity-footer'>
+          <view>
+            <text class='rmb'>￥</text>
+            <text class='commodity-price'>{{price}}</text>
+          </view>
+          <view class='commodity-operation'>
+            <block wx:if="{{sellOut}}">
+              <text class='operate-sell-out'>已售罄</text>
+            </block>
+            <block wx:else>
+              <text class='operate-commodity' data-id='add'>+</text>
+              <block wx:if="{{count}}">
+                <text>{{count}}</text>
+                <text class='operate-commodity' data-id='subtract'>-</text>
+              </block>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="shoppingCart">
+  <view class='shopping-cart-container' bindtap='settleAccounts'>
+    去结算
+  </view>
+</template>
+
+<view class='container'>
+  <view class='header'>
+    <template is="shopDetails" data="{{...shop}}" />
+  </view>
+  <view class='body'>
+    <view class='task-bar'>
+      <text class='tab active-tab'>商品</text>
+      <text class='tab' bindtap='viewOrders'>订单</text>
+    </view>
+    <block wx:if="false">
+      <view class='commodity-container'>
+        <view class='commodity-kind'>
+          <scroll-view class='commodity-kind-container' scroll-y>
+            <block wx:for="{{commodityKinds}}">
+              <view data-name="{{item.name}}" class="commodity-kind-list {{item.selected?'commodity-kind-active':''}}" bindtap='changeTab'>{{item.name}}</view>
+            </block>
+          </scroll-view>
+        </view>
+        <view class='commodity-list'>
+          <scroll-view class='commodity-list-container' scroll-y>
+            <block wx:for="{{commodityList}}">
+              <template is="commodityDetails" data="{{...item}}" />
+            </block>
+          </scroll-view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <template is="shoppingCart" />
+</view>
