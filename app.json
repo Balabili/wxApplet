@@ -4,7 +4,10 @@
     "pages/logs/logs",
     "pages/businessDetails/businessDetails",
     "pages/order/order",
-    "pages/settleAccount/settleAccount"
+    "pages/settleAccount/settleAccount",
+    "pages/selectAddress/selectAddress",
+    "pages/addRemark/addRemark",
+    "pages/orderDetails/orderDetails"
   ],
   "window": {
     "backgroundTextStyle": "light",

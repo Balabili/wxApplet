@@ -1,7 +1,7 @@
 <import src="../index/index.wxml" />
 
 <template name="orderDetails">
-  <view class='order-container'>
+  <view class='order-container' bindtap='viewOrderDetails'>
     <image src="{{img}}"></image>
     <view class='order-details-container'>
       <view class='order-details-header'>
@@ -29,7 +29,7 @@
       <text class='tab' bindtap='viewCpommodity'>商品</text>
       <text class='tab active-tab'>订单</text>
     </view>
-    <scroll-view scroll-y>
+    <scroll-view scroll-y style='height:90%;'>
       <block wx:for="{{orderList}}">
         <template is="orderDetails" data="{{...item}}" />
       </block>

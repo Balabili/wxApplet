@@ -1,0 +1,39 @@
+page {
+  height: 100%;
+}
+
+.remark-container {
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.remark-textbox {
+  margin: 30rpx auto;
+  padding: 30rpx;
+  width: 90%;
+  height: 200rpx;
+  background-color: #f5f5f5;
+  font-size: 30rpx;
+  line-height: 40rpx;
+}
+
+.placeholder-class {
+  font-size: 30rpx;
+  color: #cacaca;
+}
+
+.left-input-number {
+  position: absolute;
+  display: block;
+  top: 240rpx;
+  right: 30rpx;
+  font-size: 24rpx;
+  color: #CDCDCD;
+}
+
+.submit-button {
+  margin-top: 50rpx;
+  background-color: #7A80FA;
+  color: #fff;
+}

@@ -1,3 +1,58 @@
+page {
+  min-height: 100%;
+}
+
+.view-details-icon {
+  margin-right: 30rpx;
+  height: 50rpx;
+  width: 30rpx;
+}
+
+/* 已添加地址信息 */
+
+.address-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  width: 100%;
+  height: 150rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+.address-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.address-header {
+  display: flex;
+  align-items: center;
+}
+
+.address-icon {
+  height: 30rpx;
+  width: 30rpx;
+  margin: 0 30rpx;
+}
+
+.address-name {
+  width: 580rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-contact-info {
+  margin-left: 90rpx;
+  margin-top: 10rpx;
+  color: #909090;
+}
+
+/* 添加地址 */
+
 .add-address-container {
   display: flex;
   justify-content: space-between;
@@ -8,9 +63,10 @@
   background-color: #fff;
 }
 
-.add-address{
+.add-address {
   margin-left: 30rpx;
 }
+
 .add-address-icon {
   display: inline-block;
   height: 30rpx;
@@ -18,17 +74,172 @@
   line-height: 28rpx;
   border-radius: 30rpx;
   text-align: center;
-  border: 1rpx solid #7A80FA;
-  color: #7A80FA;
+  border: 1rpx solid #7a80fa;
+  color: #7a80fa;
 }
 
 .add-address-text {
   margin-left: 20rpx;
-  font-size: 32rpx;
+  font-size: 30rpx;
 }
 
-.add-address-container image {
-  margin-right: 30rpx;
-  height: 50rpx;
+/* 立即送出 */
+
+.arrival-time-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.arrival-time-container image {
+  height: 30rpx;
   width: 30rpx;
+  border-radius: 30rpx;
+  margin: 0 30rpx;
+}
+
+.arrival-time-text {
+  font-size: 30rpx;
+}
+
+.arrival-time {
+  color: #9f9f9f;
+}
+
+/* 支付方式 */
+
+.payment-pattern {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 100%;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+/* 备注 */
+
+.remark-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  margin-bottom: 120rpx;
+  height: 100rpx;
+  width: 100%;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+.remark-text {
+  margin-right: 30rpx;
+  color: #cacaca;
+}
+
+.remark-details {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 600rpx;
+}
+
+.remark-active {
+  color: black;
+  width: 500rpx;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 底部提交订单 */
+
+.submit-order-container {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  height: 100rpx;
+  width: 100%;
+}
+
+.submit-order-price {
+  width: 70%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+.submit-order-btn {
+  width: 30%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #7a80fa;
+  font-size: 34rpx;
+  color: #fff;
+  text-align: center;
+}
+
+/* 订单详情 */
+
+.order-items-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.order-item-container {
+  display: flex;
+  align-items: center;
+  height: 180rpx;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.order-item-container>image {
+  height: 140rpx;
+  width: 140rpx;
+}
+
+.order-item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 30rpx;
+  height: 140rpx;
+  font-size: 30rpx;
+}
+
+.order-item-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500rpx;
+}
+
+.order-item-weightage {
+  font-size: 24rpx;
+  color: #d2d2d2;
+}
+
+.total-account {
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 90%;
+  margin: 0 auto;
+  text-align: right;
+  font-size: 30rpx;
 }

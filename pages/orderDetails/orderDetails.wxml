@@ -1,0 +1,33 @@
+<!--pages/orderDetails/orderDetails.wxml-->
+<view class='container'>
+  <view class='payment-status'>
+    <text>{{paymentStatus?'支付成功':'等待支付'}}</text>
+    <block wx:if="!paymentStatus">
+      <text>请在10分钟内完成支付，超时自动取消</text>
+    </block>
+    <view class='payment-time'>
+      <text>{{paymentStatus?'预计送达时间':'等待支付'}}</text>
+    </view>
+    <block wx:if="!paymentStatus">
+      <text>取消订单</text>
+      <text>立即支付</text>
+    </block>
+  </view>
+  <view class='contact-merchant'>
+    <image></image>
+    <text>联系商家</text>
+  </view>
+  <view>
+    template
+  </view>
+  <view class='setting-dispatch'>
+    <view></view>
+    <view></view>
+    <view></view>
+  </view>
+  <view class='order-details'>
+    <view></view>
+    <view></view>
+    <view></view>
+  </view>
+</view>

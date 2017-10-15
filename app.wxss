@@ -1,9 +1,5 @@
 /**app.wxss**/
 
-page {
-  height: 100%;
-}
-
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -132,7 +128,7 @@ page {
 /* 商品价格start */
 
 .rmb {
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #fe484a;
 }
 
