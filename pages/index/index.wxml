@@ -1,13 +1,15 @@
 <template name="shopDetails">
   <view class='shop-details-container' bindtap='viewShopDetails'>
     <view class='shop-details'>
-      <image src='../../images/四月是你的谎言.jpg'></image>
+      <image src='/images/四月是你的谎言.jpg'></image>
       <view class='shop-details-body'>
         <view class='shop-details-header'>
           <text class='shop-details-title'>天使超市</text>
           <text class="shop-details-status {{shopStatus?'shop-details-status-active':'shop-details-status-deactive'}}">{{shopStatus?'营业中':'打烊了'}}</text>
         </view>
-        <text class='shop-details-comment'>21:00后不送货，请自取00后不送货，请自取</text>
+        <block wx:if="true">
+          <text class='shop-details-comment'>21:00后不送货，请自取00后不送货，请自取</text>
+        </block>
         <view class='shop-details-dispath'>
           <text>￥20起送</text>
           <text class='shop-details-dispath-servered'>|</text>
@@ -54,9 +56,31 @@
 </template>
 
 <template name="shoppingCart">
-  <view class='shopping-cart-container' bindtap='settleAccounts'>
-    去结算
-  </view>
+  <block wx:if="true" >
+    <view class='shopping-cart-container' bindtap='settleAccounts'>
+      <view class='shopping-cart-price'>未选购商品</view>
+      <text class="shopping-cart-btn {{shop?'shopping-cart-btn-active':'shopping-cart-btn-deactive'}}">{{aaaaa?'去结算':'起送'}}</text>
+    </view>
+    <view class='shopping-cart-list-container'>
+      <!-- <action-sheet>
+      <view class='shopping-cart-list-header'>
+        <text class='shopping-cart-list-title'>已选商品</text>
+        <image src='../../images/四月是你的谎言.jpg' />
+      </view> 
+      <block wx:for="{{}}"> 
+       <view class='shopping-cart-list'>
+        <text class='shopping-cart-list-name'>xxxx</text>
+        <text class='shopping-cart-list-price'>￥55.5</text>
+      </view> 
+       </block> 
+      </action-sheet> -->
+    </view>
+  </block>
+  <block wx:else>
+    <view class='store-closed' bindtap='settleAccounts'>
+      本店打烊啦
+    </view>
+  </block>
 </template>
 
 <view class='container'>
@@ -88,4 +112,5 @@
     </block>
   </view>
   <template is="shoppingCart" />
+  <modal hidden="{{hiddenModal}}" title="{{modalTitle}}" no-cancel="true" confirm-text="知道了" bindconfirm="hideModal"></modal>
 </view>

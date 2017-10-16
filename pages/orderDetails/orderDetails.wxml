@@ -1,33 +1,66 @@
-<!--pages/orderDetails/orderDetails.wxml-->
+<import src="../settleAccount/settleAccount.wxml" />
+
 <view class='container'>
-  <view class='payment-status'>
-    <text>{{paymentStatus?'支付成功':'等待支付'}}</text>
-    <block wx:if="!paymentStatus">
-      <text>请在10分钟内完成支付，超时自动取消</text>
+  <view class="payment-status {{paymentStatus?'payment-success-height':'payment-waiting-height'}}">
+    <text class="payment-status-title">{{paymentStatus?'支付成功':'等待支付'}}</text>
+    <block wx:if="{{!paymentStatus}}">
+      <text class="payment-status-notification">请在10分钟内完成支付，超时自动取消</text>
     </block>
-    <view class='payment-time'>
-      <text>{{paymentStatus?'预计送达时间':'等待支付'}}</text>
+    <view class='payment-time-container'>
+      <image src="../../images/四月是你的谎言.jpg"></image>
+      <text>{{paymentStatus?'预计送达时间':'等待支付'}}: </text>
+      <text class='payment-time'>10:15</text>
     </view>
-    <block wx:if="!paymentStatus">
-      <text>取消订单</text>
-      <text>立即支付</text>
+    <block wx:if="{{!paymentStatus}}">
+      <view class='payment-status-buttons'>
+        <text class="payment-status-cancel">取消订单</text>
+        <text class="payment-status-paynow">立即支付</text>
+      </view>
     </block>
   </view>
   <view class='contact-merchant'>
-    <image></image>
+    <image src="../../images/四月是你的谎言.jpg"></image>
     <text>联系商家</text>
   </view>
-  <view>
-    template
+  <view class='order-items-container'>
+    <block wx:for="{{orderItemList}}">
+      <template is="orderedItemDetails" data="{{...item}}" />
+    </block>
+    <view class='total-account'>
+      <text>合计:</text>
+      <text class='rmb'>￥</text>
+      <text class='commodity-price'>666.6</text>
+    </view>
   </view>
   <view class='setting-dispatch'>
-    <view></view>
-    <view></view>
-    <view></view>
+    <view class='dispatch-expect-time'>
+      <text class='setting-key'>期望时间</text>
+      <text>立即配送</text>
+    </view>
+    <view class='dispatch-address'>
+      <text class='setting-key'>配送地址</text>
+      <view class='dispatch-address-details'>
+        <text>刘女士 18844188661</text>
+        <text>吉林省优格信息科技有限公司</text>
+      </view>
+    </view>
+    <view class='dispatch-from'>
+      <text class='setting-key'>配送服务</text>
+      <text>由 商家 提供配送服务</text>
+    </view>
   </view>
   <view class='order-details'>
-    <view></view>
-    <view></view>
-    <view></view>
+    <view class='order-number'>
+      <text class='setting-key'>订单号码</text>
+      <text>11111111111111111111</text>
+    </view>
+    <view class='order-time'>
+      <text class='setting-key'>订单时间</text>
+      <text>2017-10-10 12：55：44</text>
+    </view>
+    <view class='order-payment-way'>
+      <text class='setting-key'>支付方式</text>
+      <text>在线支付</text>
+    </view>
   </view>
 </view>

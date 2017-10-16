@@ -22,6 +22,12 @@ Page({
   onReady: function () {
 
   },
+  
+  addNewAddress() {
+    wx.navigateTo({
+      url: '../addAddress/addAddress',
+    });
+  },
 
   /**
    * 生命周期函数--监听页面显示

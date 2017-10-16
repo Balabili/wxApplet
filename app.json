@@ -7,7 +7,8 @@
     "pages/settleAccount/settleAccount",
     "pages/selectAddress/selectAddress",
     "pages/addRemark/addRemark",
-    "pages/orderDetails/orderDetails"
+    "pages/orderDetails/orderDetails",
+    "pages/addAddress/addAddress"
   ],
   "window": {
     "backgroundTextStyle": "light",

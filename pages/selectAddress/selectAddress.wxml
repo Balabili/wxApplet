@@ -28,7 +28,7 @@
       </block>
     </block>
   </view>
-  <view class='add-new-address'>
+  <view class='add-new-address' bindtap='addNewAddress'>
     <text class='add-address-icon'>+</text>
     <text>新增收货地址</text>
   </view>

@@ -1,0 +1,48 @@
+<view class="container">
+  <view class='contact-info'>
+    <view class='contact-info-header'>
+      <text class="header-icon"></text>
+      <text>联系人信息</text>
+    </view>
+    <view class='contact-name-container'>
+      <text class='contact-name'>姓名</text>
+      <input class='contact-name-textbox' type='text' placeholder='请填写收货人姓名' placeholder-class='placeholder-class' />
+    </view>
+    <view>
+      <radio-group class="radio-group">
+        <view style='margin-left:180rpx;'>
+          <radio id='man' value='man' color='#7A80FA' checked='true' />
+          <label for='man'>先生</label>
+        </view>
+        <view style='margin-left:100rpx;'>
+          <radio id='woman' value='woman' color='#7A80FA' />
+          <label for='woman'>女士</label>
+        </view>
+      </radio-group>
+    </view>
+    <view class='between-line'></view>
+    <view class='contact-phone-container'>
+      <text class='contact-phone'>手机号码</text>
+      <input type='number' placeholder='请填写收货人手机号码' placeholder-class='placeholder-class' />
+    </view>
+  </view>
+  <view class='delivery-address-container'>
+    <view class='delivery-address-header'>
+      <text class="header-icon"></text>
+      <text>收货地址</text>
+    </view>
+    <view class="delivery-address">
+      <text class='delivery-address-key'>小区/大厦/学校</text>
+      <view class='delivery-address-value'>
+        <image src='../../images/四月是你的谎言.jpg'></image>
+        <text class="address {{address?'':'need-selected'}}">{{address?address:'点击选择'}}</text>
+        <image src='../../images/四月是你的谎言.jpg'></image>
+      </view>
+    </view>
+    <view class='between-line'></view>
+    <view class='delivery-address-details'>
+      <text class='delivery-address-key'>楼号 门牌号</text>
+      <input class='contact-name-textbox' type='text' placeholder='例： 10号楼 427室' placeholder-class='placeholder-class' />
+    </view>
+  </view>
+</view>

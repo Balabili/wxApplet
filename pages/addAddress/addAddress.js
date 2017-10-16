@@ -1,12 +1,11 @@
-// pages/orderDetails/orderDetails.js
+// pages/addAddress/addAddress.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    paymentStatus: true,
-    orderItemList: [{ image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }]
+    address:'dddddddddddddddddddddddddddddddddddddddd'
   },
 
   /**

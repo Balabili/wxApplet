@@ -7,7 +7,10 @@ Page({
   data: {
     commodityKinds: [],
     commodityList: [],
-    shop: { notice: '欢迎在本超市选购商品', shopStatus: 1 }
+    shop: { notice: '欢迎在本超市选购商品', shopStatus: 1 },
+    hiddenModal: true,
+    //21点以后不进行配送，请到店自取
+    modalTitle: '已经打烊了~'
   },
 
   /**
@@ -49,6 +52,11 @@ Page({
   settleAccounts() {
     wx.navigateTo({
       url: '../settleAccount/settleAccount'
+    });
+  },
+  hideModal() {
+    this.setData({
+      hiddenModal: true
     });
   },
 
