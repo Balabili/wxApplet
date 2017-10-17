@@ -17,7 +17,12 @@
         </view>
       </view>
     </view>
-    <image class='shop-details-icon' src='../../images/四月是你的谎言.jpg'></image>
+    <block wx:if="">
+      <image class='shop-details-icon' src='../../images/四月是你的谎言.jpg'></image>
+    </block>
+    <block wx:else>
+      <image class='shop-details-icon' src='../../images/四月是你的谎言.jpg'></image>
+    </block>
   </view>
   <view class='shop-notice-container'>
     <text class='shop-notice'>公告</text>
@@ -56,7 +61,7 @@
 </template>
 
 <template name="shoppingCart">
-  <block wx:if="true" >
+  <block wx:if="">
     <view class='shopping-cart-container' bindtap='settleAccounts'>
       <view class='shopping-cart-price'>未选购商品</view>
       <text class="shopping-cart-btn {{shop?'shopping-cart-btn-active':'shopping-cart-btn-deactive'}}">{{aaaaa?'去结算':'起送'}}</text>
@@ -83,16 +88,37 @@
   </block>
 </template>
 
+<template name="orderDetails">
+  <view class='order-container' bindtap='viewOrderDetails'>
+    <image src="{{img}}"></image>
+    <view class='order-details-container'>
+      <view class='order-details-header'>
+        <text class='order-details-title'>{{name}}</text>
+        <text class="order-details-status {{status?'':'color-orange'}}">{{status?'已付款':'待付款'}}</text>
+      </view>
+      <text class='order-details-order-time'>下单时间：{{time}}</text>
+      <view class='order-details-footer'>
+        <view>
+          <text class='rmb'>￥</text>
+          <text class='commodity-price'>{{price}}</text>
+        </view>
+        <text class="order-detail-oparation {{status?'order-detail-again':'order-detail-pay-now'}}">{{status?'再来一单':'立即支付'}}</text>
+      </view>
+    </view>
+  </view>
+</template>
+
 <view class='container'>
   <view class='header'>
     <template is="shopDetails" data="{{...shop}}" />
   </view>
-  <view class='body'>
+  <view class='body' bindtouchstart='aaaa' bindtouchmove='xxxx'>
     <view class='task-bar'>
-      <text class='tab active-tab'>商品</text>
-      <text class='tab' bindtap='viewOrders'>订单</text>
+      <text class="tab {{test?'active-tab':''}}" bindtap='viewCommodity'>商品</text>
+      <text class="tab {{test?'':'active-tab'}}" bindtap='viewOrders'>订单</text>
     </view>
-    <block wx:if="false">
+    <!-- <scroll-view scroll-x> -->
+    <block wx:if="{{test}}">
       <view class='commodity-container'>
         <view class='commodity-kind'>
           <scroll-view class='commodity-kind-container' scroll-y>
@@ -110,7 +136,16 @@
         </view>
       </view>
     </block>
+    <block wx:else>
+      <scroll-view scroll-y style='height:90%;'>
+        <block wx:for="{{orderList}}">
+          <template is="orderDetails" data="{{...item}}" />
+        </block>
+      </scroll-view>
+    </block>
   </view>
-  <template is="shoppingCart" />
+  <block wx:if="{{test}}">
+    <template is="shoppingCart" />
+  </block>
   <modal hidden="{{hiddenModal}}" title="{{modalTitle}}" no-cancel="true" confirm-text="知道了" bindconfirm="hideModal"></modal>
 </view>

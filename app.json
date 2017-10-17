@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/businessDetails/businessDetails",
-    "pages/order/order",
     "pages/settleAccount/settleAccount",
     "pages/selectAddress/selectAddress",
     "pages/addRemark/addRemark",

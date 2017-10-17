@@ -48,19 +48,26 @@
   height: 60rpx;
 }
 
+.shop-details-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #000;
+}
+
 .shop-details-status {
   display: inline-block;
-  height: 45rpx;
-  line-height: 45rpx;
+  height: 38rpx;
+  width: 97rpx;
+  line-height: 38rpx;
   border-radius: 8rpx;
   margin-left: 20rpx;
   font-size: 22rpx;
-  padding: 0 15rpx;
+  text-align: center;
 }
 
 .shop-details-status-active {
-  background-color: #f0f2fd;
-  color: #a9a5f5;
+  background-color: #eef9eb;
+  color: #54c536;
 }
 
 .shop-details-status-deactive {
@@ -69,8 +76,8 @@
 }
 
 .shop-details-comment {
-  color: #ff6d5e;
-  font-size: 28rpx;
+  color: #ff6c5d;
+  font-size: 24rpx;
   width: 400rpx;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -80,13 +87,13 @@
 .shop-details-dispath {
   height: 50rpx;
   line-height: 50rpx;
-  color: #a7a7a7;
-  font-size: 28rpx;
+  color: #999;
+  font-size: 24rpx;
 }
 
 .shop-details-dispath-servered {
   margin: 0 20rpx;
-  color: #eaeaea;
+  color: #eee;
 }
 
 .shop-details-icon {
@@ -104,20 +111,21 @@
 
 .shop-notice {
   display: inline-block;
-  padding: 0 15rpx;
-  height: 45rpx;
-  line-height: 45rpx;
+  height: 36rpx;
+  width: 67rpx;
+  text-align: center;
+  line-height: 36rpx;
   border-radius: 8rpx;
   color: #fff;
-  font-size: 22rpx;
+  font-size: 20rpx;
   background-color: #ff6d5e;
 }
 
 .shop-notice-details {
   margin-left: 20rpx;
   width: 500rpx;
-  color: #a9a9a9;
-  font-size: 28rpx;
+  color: #999;
+  font-size: 24rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -128,13 +136,13 @@
 /* 商品价格start */
 
 .rmb {
-  font-size: 26rpx;
-  color: #fe484a;
+  font-size: 24rpx;
+  color: #ff6262;
 }
 
 .commodity-price {
-  font-size: 40rpx;
-  color: #fe484a;
+  font-size: 36rpx;
+  color: #ff6262;
 }
 
 /* 商品价格end */

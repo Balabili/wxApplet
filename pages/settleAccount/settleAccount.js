@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    remark: '你大爷你大爷你大爷你大爷你大爷你大爷你大爷你大爷你大爷你大爷你大爷你大爷',
+    remark: '',
     price: 999.9,
     orderItemList: [{ image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }]
   },
@@ -14,7 +14,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let remark = wx.getStorageSync('remark');
+    console.log(remark);
+    this.setData({
+      remark: remark
+    });
   },
 
   /**

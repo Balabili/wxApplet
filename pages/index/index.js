@@ -7,10 +7,13 @@ Page({
   data: {
     commodityKinds: [],
     commodityList: [],
+    test: true,
     shop: { notice: '欢迎在本超市选购商品', shopStatus: 1 },
+    orderList: [{ img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }],
     hiddenModal: true,
     //21点以后不进行配送，请到店自取
-    modalTitle: '已经打烊了~'
+    modalTitle: '已经打烊了~',
+    pageX: 0
   },
 
   /**
@@ -43,16 +46,48 @@ Page({
     wx.navigateTo({
       url: '../businessDetails/businessDetails'
     });
+    // wx.navigateTo({
+    //   url: '../logs/logs'
+    // });
   },
   viewOrders() {
-    wx.redirectTo({
-      url: '../order/order'
+    this.setData({
+      test: false
     });
+  },
+  viewCommodity() {
+    this.setData({
+      test: true
+    });
+  },
+  aaaa(e) {
+    this.setData({
+      pageX: e.touches[0].pageX
+    });
+  },
+  xxxx(e) {
+    if (e.touches[0].pageX - this.data.pageX > 100) {
+      this.setData({
+        test: true
+      });
+    } else if (e.touches[0].pageX - this.data.pageX < -100) {
+      this.setData({
+        test: false
+      });
+    }
   },
   settleAccounts() {
     wx.navigateTo({
       url: '../settleAccount/settleAccount'
     });
+    // wx.makePhoneCall({
+    //   phoneNumber: '17600124031',
+    //   success() {
+    //     console.log('success');
+    //   }, fail(e) {
+    //     console.log(arguments);
+    //   }
+    // });
   },
   hideModal() {
     this.setData({

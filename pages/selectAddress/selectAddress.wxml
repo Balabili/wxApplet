@@ -1,12 +1,17 @@
 <template name="addressInfo">
-  <view class='address-container'>
-    <image src="../../images/四月是你的谎言.jpg"></image>
-    <view class='address-info-container'>
-      <text>{{name}} {{phone}}</text>
-      <text class='address-info-details'>{{address}}</text>
+  <view class="address-container {{isTouchMove?'touch-move-active':''}}" data-id="{{name}}" bindtap='changeAddress' bindtouchstart='touchstart' bindtouchmove='touchmove'>
+    <view class='address-item'>
+      <image src="../../images/四月是你的谎言.jpg"></image>
+      <view class='address-info-container'>
+        <text>{{name}} {{phone}}</text>
+        <text class='address-info-details'>{{address}}</text>
+      </view>
+      <block wx:if="{{isSelected}}">
+        <icon class='isSelected-icon' type="success" size="25" color='#7FA0FF' />
+      </block>
     </view>
-    <block wx:if="{{isSelected}}">
-      <icon class='isSelected-icon' type="success" size="25" color='#7FA0FF' />
+    <block wx:if="{{isTouchMove}}">
+      <view class='delete-address'>删除</view>
     </block>
   </view>
 </template>

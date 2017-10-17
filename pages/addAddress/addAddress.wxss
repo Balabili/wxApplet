@@ -17,6 +17,13 @@ page {
   font-size: 30rpx;
 }
 
+.address-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .contact-info {
   margin-top: 20rpx;
   height: 400rpx;
@@ -73,6 +80,7 @@ page {
 
 .delivery-address-container {
   margin-top: 20rpx;
+  padding-bottom: 20rpx;
   min-height: 250rpx;
   width: 100%;
   background-color: #fff;
@@ -88,7 +96,7 @@ page {
 .delivery-address-details {
   display: flex;
   align-items: center;
-  margin: 20rpx 0 20rpx 30rpx;
+  margin: 20rpx 0 0 30rpx;
 }
 
 .delivery-address-key {
@@ -108,8 +116,8 @@ page {
 
 .address {
   display: inline-block;
-  width: 380rpx;
-  margin: 0 5rpx;
+  width: 370rpx;
+  margin: 0 20rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -117,4 +125,11 @@ page {
 
 .need-selected {
   color: #bbb;
+}
+
+.save-btn {
+  width: 90%;
+  margin: 60rpx auto;
+  background-color: #7a80fa;
+  color: #fff;
 }

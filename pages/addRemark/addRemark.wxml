@@ -1,7 +1,7 @@
 <view class="container">
   <view class='remark-container'>
-    <textarea class='remark-textbox' placeholder='请输入备注信息' placeholder-class="placeholder-class" maxlength="50"></textarea>
-    <text class='left-input-number'>0/50</text>
-    <button class='submit-button' size='default'>完成</button>
+    <textarea class='remark-textbox' placeholder='请输入备注信息' placeholder-class="placeholder-class" maxlength="50" value="{{remark}}" bindinput='addRemark'></textarea>
+    <text class='left-input-number'>{{length}}/50</text>
+    <button class='submit-button' size='default' bindtap='saveAddress'>完成</button>
   </view>
 </view>

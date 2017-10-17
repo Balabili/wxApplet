@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address:'dddddddddddddddddddddddddddddddddddddddd'
+    userName: '',
+    gender: '',
+    phone: '',
+    address: '',
+    houseNumber: '',
+    hiddenModal: true,
+    modalTitle: ''
   },
 
   /**
@@ -20,6 +26,67 @@ Page({
    */
   onReady: function () {
 
+  },
+  inputName({ detail }) {
+    this.setData({
+      userName: detail.value
+    });
+  },
+  genderChange({ detail }) {
+    this.setData({
+      gender: detail.value
+    });
+  },
+  inputPhone({ detail }) {
+    this.setData({
+      phone: detail.value
+    });
+  },
+  chooseLocation() {
+    let self = this;
+    wx.chooseLocation({
+      success(res) {
+        self.setData({
+          address: res.address ? res.address : ''
+        });
+      }
+    });
+  },
+  inputHouseNumber({ detail }) {
+    this.setData({
+      houseNumber: detail.value
+    });
+  },
+  saveAddress() {
+    let data = this.data;
+    if (data.userName === '') {
+      this.setData({
+        hiddenModal: false,
+        modalTitle: '请输入您的姓名'
+      });
+      return;
+    }
+    if (data.phone === '' || !/^1[34578]\d{9}$/.test(data.phone)) {
+      this.setData({
+        hiddenModal: false,
+        modalTitle: '请输入正确手机号',
+        phone: ''
+      });
+      return;
+    }
+    if (data.address === '') {
+      this.setData({
+        hiddenModal: false,
+        modalTitle: '请选择小区/大厦/学校'
+      });
+      return;
+    }
+    debugger;
+  },
+  hideModal() {
+    this.setData({
+      hiddenModal: true
+    });
   },
 
   /**
