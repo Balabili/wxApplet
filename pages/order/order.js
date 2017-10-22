@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shop: { notice: '欢迎在本超市选购商品', shopStatus: 1 },
-    orderList: [{ img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }]
+    tabIndex: 0,
+    orderList: [{ img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 1, price: 56.8 }, { img: '../../images/四月是你的谎言.jpg', name: '你大爷你二爷你三爷', time: '2017-9-27 16:32', status: 0, price: 56.8 }]
+
   },
 
   /**
@@ -15,6 +16,17 @@ Page({
   onLoad: function (options) {
 
   },
+  changeTab({ currentTarget }) {
+    let index = +currentTarget.dataset.index;
+    this.setData({
+      tabIndex: index
+    });
+  },
+  viewOrderDetails() {
+    wx.navigateTo({
+      url: '../orderDetails/orderDetails',
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -22,22 +34,18 @@ Page({
   onReady: function () {
 
   },
-  viewCpommodity() {
-    wx.redirectTo({
-      url: '../index/index'
-    });
-  },
-  viewOrderDetails() {
-    wx.navigateTo({
-      url: '../orderDetails/orderDetails'
-    });
-  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let index = wx.getStorageSync('orderPageIndex');
+    if (index !== '') {
+      wx.removeStorageSync('orderPageIndex');
+      this.setData({
+        tabIndex: +index
+      });
+    }
   },
 
   /**

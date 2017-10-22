@@ -49,7 +49,7 @@ page {
 
 .payment-time {
   margin-left: 10rpx;
-  color: #96aaef;
+  color: #1aad19;
 }
 
 .payment-status-buttons {
@@ -59,15 +59,15 @@ page {
 .payment-status-cancel {
   display: inline-block;
   padding: 10rpx 50rpx;
-  border: 2rpx solid #7a80fa;
+  border: 2rpx solid #1aad19;
   border-radius: 8rpx;
-  color: #7a80fa;
+  color: #1aad19;
 }
 
 .payment-status-paynow {
   display: inline-block;
   padding: 10rpx 50rpx;
-  background-color: #7a80fa;
+  background-color: #1aad19;
   border-radius: 8rpx;
   color: #fff;
   margin-left: 30rpx;

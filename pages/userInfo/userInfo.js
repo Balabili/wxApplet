@@ -1,12 +1,11 @@
-// pages/orderDetails/orderDetails.js
+// pages/userInfo/userInfo.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    paymentStatus: false,
-    orderItemList: [{ image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }]
+
   },
 
   /**
@@ -14,6 +13,18 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  viewOrders({ currentTarget }) {
+    let index = currentTarget.dataset.index;
+    wx.setStorageSync('orderPageIndex', index );
+    wx.switchTab({
+      url: '/pages/order/order',
+    });
+  },
+  selectAddress() {
+    wx.navigateTo({
+      url: '../selectAddress/selectAddress',
+    });
   },
 
   /**

@@ -1,0 +1,25 @@
+<view class="container">
+  <view class='header'>
+    <image class='user-image' src='../../images/四月是你的谎言.jpg' />
+    <text class='user-name'>18888888888</text>
+  </view>
+  <view class='operation-container'>
+    <view class='operation-item' data-index='1' bindtap='viewOrders'>
+      <image src='../../images/四月是你的谎言.jpg' />
+      <text>待付款</text>
+    </view>
+    <view class='operation-item' data-index='2' bindtap='viewOrders'>
+      <image src='../../images/四月是你的谎言.jpg' />
+      <text>已付款</text>
+    </view>
+    <view class='operation-item' data-index='0' bindtap='viewOrders'>
+      <image src='../../images/四月是你的谎言.jpg' />
+      <text>全部订单</text>
+    </view>
+  </view>
+  <view class='address-container' bindtap='selectAddress'>
+    <text class='address-key'>收货地址</text>
+    <text class='address-value'>你大爷</text>
+    <image class='select-detail' src='../../images/四月是你的谎言.jpg' />
+  </view>
+</view>

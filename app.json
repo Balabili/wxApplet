@@ -7,12 +7,35 @@
     "pages/selectAddress/selectAddress",
     "pages/addRemark/addRemark",
     "pages/orderDetails/orderDetails",
-    "pages/addAddress/addAddress"
+    "pages/addAddress/addAddress",
+    "pages/order/order",
+    "pages/userInfo/userInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "天使超市",
+    "navigationBarTitleText": "零售宝",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#1aad19",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/userInfo/userInfo",
+        "text": "我的"
+      }
+    ]
   }
 }

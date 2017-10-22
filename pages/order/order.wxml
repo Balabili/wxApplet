@@ -1,16 +1,42 @@
-<import src="../index/index.wxml" />
-
-
-
-<view class='container'>
-  <view class='header'>
-    <template is="shopDetails" data="{{...shop}}" />
-  </view>
-  <view class='body'>
-    <view class='task-bar'>
-      <text class='tab' bindtap='viewCpommodity'>商品</text>
-      <text class='tab active-tab'>订单</text>
+<template name="orderDetails">
+  <view class='order-container' bindtap='viewOrderDetails'>
+    <view class='image-container'>
+      <image class='order-image' src="{{img}}"></image>
     </view>
+    <view class='order-details-container'>
+      <view class='order-details-header'>
+        <text class='order-details-title'>{{name}}</text>
+        <text class="order-details-status {{status?'':'color-orange'}}">{{status?'已付款':'待付款'}}</text>
+      </view>
+      <text class='order-details-order-time'>下单时间：{{time}}</text>
+      <view class='order-details-footer'>
+        <view>
+          <text class='rmb'>￥</text>
+          <text class='commodity-price'>{{price}}</text>
+        </view>
+        <view class='operation-container'>
+          <text class="operation-btn {{status?'again-btn':'paynow-btn'}}">{{status?'再来一单':'立即支付'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
 
+<view class="container">
+  <view class='tab-bar'>
+    <view data-index="0" class="{{tabIndex===0?'tab-active':''}}" bindtap='changeTab'>
+      <text>全部订单</text>
+    </view>
+    <view data-index="1" class="{{tabIndex===1?'tab-active':''}}" bindtap='changeTab'>
+      <text>待付款</text>
+    </view>
+    <view data-index="2" class="{{tabIndex===2?'tab-active':''}}" bindtap='changeTab'>
+      <text>已付款</text>
+    </view>
+  </view>
+  <view class='order-list-container'>
+    <block wx:for="{{orderList}}">
+      <template is="orderDetails" data="{{...item}}" />
+    </block>
   </view>
 </view>
