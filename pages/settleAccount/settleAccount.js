@@ -1,82 +1,95 @@
-// pages/settleAcount/settleAccount.js
+import { api, getTimeStamp, getNonceStr } from '../../utils/util.js';
+
+const { imageUserBaseUrl, shopInfo, appid, payId, payKey, template_id, secret } = getApp().globalData;
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
+    imageContainer: {
+      addAddress: imageUserBaseUrl + 'c_add_address.png',
+      detail: imageUserBaseUrl + 'c_home_arrow_small.png',
+      position: imageUserBaseUrl + 'c_home_button_location.png',
+      wait: imageUserBaseUrl + 'c_wait_time_green.png'
+    },
+    address: {},
     remark: '',
-    price: 999.9,
-    orderItemList: [{ image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }, { image: '../../images/四月是你的谎言.jpg', name: '你大爷', count: 1, weightage: '12盒/箱', price: 66.6 }]
+    price: 0,
+    orderStorage: {},
+    orderId: ''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    let remark = wx.getStorageSync('remark');
-    console.log(remark);
+  onLoad(options) {
+    let orderStorage = wx.getStorageSync('orderStorage');
     this.setData({
-      remark: remark
+      orderStorage: orderStorage
     });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
   addAddress() {
     wx.navigateTo({
-      url: '../selectAddress/selectAddress'
+      url: '../selectAddress/selectAddress?from=order'
     });
   },
+
   addRemark() {
     wx.navigateTo({
       url: '../addRemark/addRemark'
     });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  submitOrder() {
+    let self = this, data = self.data, disableBtn = data.disableBtn, address = data.address, remark = data.remark, prepayId = '', nonceStr = getNonceStr(), userInfo = wx.getStorageSync('lsb_user');
+    if (!address.id) {
+      self.setData({
+        disableBtn: false
+      });
+      api.modal('请填写收货地址', false, '', '知道啦');
+      return;
+    }
+    api.loadingModal('loading');
+    api.request('/buyer/order/createOrder', { userId: userInfo.openid, shopId: shopInfo, addressId: address.id, notice: remark }).then(({ data }) => {
+      wx.removeStorageSync('shoppingCart');
+      self.setData({
+        orderId: data.id
+      });
+      let orderData = {};
+      orderData.openid = userInfo.openid;
+      orderData.price = data.total.toString();
+      orderData.orderNum = data.orderNumber;
+      orderData.appid = appid;
+      orderData.mch_id = payId;
+      orderData.sec32 = nonceStr;
+      orderData.mySec32 = payKey;
+      return api.request('/buyer/order/doOrder', orderData);
+    }).then(({ data }) => {
+      prepayId = data.package.substring(10);
+      wx.hideLoading();
+      return api.requestPayment(data.timeStamp, data.nonceStr, data.package, data.paySign);
+    }).then((result) => {
+      if (result) {
+        //appId: result.appId, secret: result.secret, template_id: result.template_id, prepay_id: result.prepayId
+        let orderId = self.data.orderId;
+        return api.request('/buyer/order/paySuccess', { appId: result.appId, secret: result.secret, template_id: result.template_id, prepay_id: result.prepay_id, orderId: orderId });
+      }
+    }).then(() => {
+      let orderId = self.data.orderId;
+      wx.navigateTo({
+        url: '../orderDetails/orderDetails?id=' + orderId
+      });
+    }).catch((e) => {
+      console.log(e);
+      wx.hideLoading();
+      wx.navigateTo({
+        url: '../orderDetails/orderDetails?id=' + orderId
+      });
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onShow() {
+    let remark = wx.getStorageSync('remark'), addressStorage = wx.getStorageSync('addressStorage');
+    this.setData({
+      remark: remark,
+      address: addressStorage || {}
+    });
   }
 })

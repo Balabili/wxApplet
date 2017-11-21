@@ -1,0 +1,83 @@
+<template name="orderedItemDetails">
+  <view class='order-item-container'>
+    <image src="{{img}}"></image>
+    <view class='order-item-details'>
+      <view class='order-item-header'>
+        <text>{{name}}</text>
+        <text>x{{count}}</text>
+      </view>
+      <view class='order-item-footer'>
+        <text class='order-item-weightage'>{{standard}}</text>
+        <text class='order-item-price'>￥{{price}}</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<view class='container'>
+  <block wx:if="{{paymentStatus}}">
+    <view class="payment-status payment-success-height">
+      <text class="payment-status-title">支付成功</text>
+      <view class='payment-time-container'>
+        <image src="{{imageUserBaseUrl.wait}}"></image>
+        <text>预计送达时间: </text>
+        <text class='payment-time'>{{orderDetails.finishTime}}</text>
+      </view>
+    </view>
+    <view class='contact-merchant' bindtap='cantactCustom'>
+      <image src="{{imageUserBaseUrl.call}}"></image>
+      <text>联系买家</text>
+    </view>
+  </block>
+  <view class='order-items-container'>
+    <block wx:for="{{orderDetails.detailList}}">
+      <template is="orderedItemDetails" data="{{...item}}" />
+    </block>
+    <block wx:if="{{orderDetails.detailList.length}}">
+      <view class='total-account'>
+        <text>合计:</text>
+        <text class='rmb'>￥</text>
+        <text class='commodity-price'>{{total}}</text>
+      </view>
+    </block>
+  </view>
+  <view class='setting-dispatch'>
+    <view class='dispatch-expect-time'>
+      <text class='setting-key'>期望时间</text>
+      <text>立即配送</text>
+    </view>
+    <view class='dispatch-address'>
+      <text class='setting-key'>配送地址</text>
+      <view class='dispatch-address-details'>
+        <text>{{orderDetails.userName+' '+ orderDetails.phone}}</text>
+        <text>{{orderDetails.address}} {{orderDetails.detailAddress}}</text>
+      </view>
+    </view>
+    <view class='dispatch-from'>
+      <text class='setting-key'>配送服务</text>
+      <text>由 商家 提供配送服务</text>
+    </view>
+  </view>
+  <view class='order-details'>
+    <view class='order-number'>
+      <text class='setting-key'>订单号码</text>
+      <text>{{orderDetails.number}}</text>
+    </view>
+    <view class='order-time'>
+      <text class='setting-key'>订单时间</text>
+      <text>{{orderDetails.createDate}}</text>
+    </view>
+    <view class='order-payment-way'>
+      <text class='setting-key'>支付方式</text>
+      <text>在线支付</text>
+    </view>
+    <view class='order-remark'>
+      <text class='setting-key'>订单备注</text>
+      <text class='remark-text'>{{orderInfo.notice}}</text>
+    </view>
+    <block wx:if="{{!paymentStatus}}">
+      <image class='complete-image' src='{{imageUserBaseUrl.complete}}' />
+    </block>
+  </view>
+  <button class="complete-order" type='primary' disabled="{{!paymentStatus}}" bindtap='completeOrder'>{{paymentStatus?'完成订单':'订单已完成'}}</button>
+</view>

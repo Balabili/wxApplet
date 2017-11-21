@@ -1,0 +1,6 @@
+<view class="container">
+  <view class='description-container'>
+    <textarea class='description-textbox' value='{{description}}' maxlength="-1" auto-height auto-focus placeholder='请出入商品描述' placeholder-class='placeholder-class' bindinput='changeDescription' bindblur='setDescription'></textarea>
+  </view>
+  <button class='save-description' type='primary' bindtap='saveDescription'>完成</button>
+</view>

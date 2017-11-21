@@ -1,151 +1,182 @@
-<template name="shopDetails">
-  <view class='shop-details-container' bindtap='viewShopDetails'>
+<template name="shopInfo">
+  <view class='shop-details-container' bindtap='viewBusinessDetails'>
     <view class='shop-details'>
-      <image src='/images/四月是你的谎言.jpg'></image>
+      <image src='{{logoUrl}}' mode='aspectFill'></image>
       <view class='shop-details-body'>
         <view class='shop-details-header'>
-          <text class='shop-details-title'>天使超市</text>
-          <text class="shop-details-status {{shopStatus?'shop-details-status-active':'shop-details-status-deactive'}}">{{shopStatus?'营业中':'打烊了'}}</text>
+          <text class="shop-details-status {{closeFlag==='0'?'shop-details-status-active':'shop-details-status-deactive'}}">{{closeFlag==='0'?'营业中':'打烊了'}}</text>
         </view>
-        <block wx:if="true">
-          <text class='shop-details-comment'>21:00后不送货，请自取00后不送货，请自取</text>
-        </block>
         <view class='shop-details-dispath'>
-          <text>￥20起送</text>
+          <text>￥{{servicePrice}}起送</text>
           <text class='shop-details-dispath-servered'>|</text>
-          <text>40分钟送达</text>
+          <text>{{serviceTime}}分钟送达</text>
+        </view>
+        <view class='shop-notice-container'>
+          <text class='shop-notice'>公告</text>
+          <text class='shop-notice-details'>{{notice}}</text>
         </view>
       </view>
     </view>
-    <block wx:if="">
-      <image class='shop-details-icon' src='../../images/四月是你的谎言.jpg'></image>
+    <image class='shop-details-icon' src='{{imageContainer.homeArrow}}' bindtap='contactShop'></image>
+    <block wx:if="{{formCount<25}}">
+      <image class="down-fox-image" src='{{imageContainer.downImg}}' />
     </block>
     <block wx:else>
-      <image class='shop-details-icon' src='../../images/四月是你的谎言.jpg'></image>
+      <image class="happy-fox-image" src='{{imageContainer.happyImg}}' />
     </block>
   </view>
-  <view class='shop-notice-container'>
-    <text class='shop-notice'>公告</text>
-    <text class='shop-notice-details'>{{notice}}</text>
-  </view>
 </template>
 
-<template name="commodityDetails">
-  <view class='commodity-details' data-id='{{id}}' catchtap='commodityOperate'>
-    <image src='{{img}}'></image>
-    <view class='commodity-description'>
-      <text class='commodity-title'>{{name}}</text>
-      <view>
-        <text class='commodity-weightage'>{{weightage}}</text>
-        <view class='commodity-footer'>
-          <view>
-            <text class='rmb'>￥</text>
-            <text class='commodity-price'>{{price}}</text>
-          </view>
-          <view class='commodity-operation'>
-            <block wx:if="{{sellOut}}">
-              <text class='operate-sell-out'>已售罄</text>
-            </block>
-            <block wx:else>
-              <text class='operate-commodity' data-id='add'>+</text>
-              <block wx:if="{{count}}">
-                <text>{{count}}</text>
-                <text class='operate-commodity' data-id='subtract'>-</text>
-              </block>
-            </block>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-</template>
-
-<template name="shoppingCart">
-  <block wx:if="">
-    <view class='shopping-cart-container' bindtap='settleAccounts'>
-      <view class='shopping-cart-price'>未选购商品</view>
-      <text class="shopping-cart-btn {{shop?'shopping-cart-btn-active':'shopping-cart-btn-deactive'}}">{{aaaaa?'去结算':'起送'}}</text>
-    </view>
-    <view class='shopping-cart-list-container'>
-      <!-- <action-sheet>
-      <view class='shopping-cart-list-header'>
-        <text class='shopping-cart-list-title'>已选商品</text>
-        <image src='../../images/四月是你的谎言.jpg' />
-      </view> 
-      <block wx:for="{{}}"> 
-       <view class='shopping-cart-list'>
-        <text class='shopping-cart-list-name'>xxxx</text>
-        <text class='shopping-cart-list-price'>￥55.5</text>
-      </view> 
-       </block> 
-      </action-sheet> -->
-    </view>
-  </block>
-  <block wx:else>
-    <view class='store-closed' bindtap='settleAccounts'>
-      本店打烊啦
-    </view>
-  </block>
-</template>
-
-<template name="orderDetails">
-  <view class='order-container' bindtap='viewOrderDetails'>
-    <image src="{{img}}"></image>
-    <view class='order-details-container'>
-      <view class='order-details-header'>
-        <text class='order-details-title'>{{name}}</text>
-        <text class="order-details-status {{status?'':'color-orange'}}">{{status?'已付款':'待付款'}}</text>
-      </view>
-      <text class='order-details-order-time'>下单时间：{{time}}</text>
-      <view class='order-details-footer'>
-        <view>
-          <text class='rmb'>￥</text>
-          <text class='commodity-price'>{{price}}</text>
-        </view>
-        <text class="order-detail-oparation {{status?'order-detail-again':'order-detail-pay-now'}}">{{status?'再来一单':'立即支付'}}</text>
-      </view>
-    </view>
-  </view>
-</template>
-
-<view class='container'>
+<view class="container">
   <view class='header'>
-    <template is="shopDetails" data="{{...shop}}" />
-  </view>
-  <view class='body' bindtouchstart='aaaa' bindtouchmove='xxxx'>
-    <view class='task-bar'>
-      <text class="tab {{test?'active-tab':''}}" bindtap='viewCommodity'>商品</text>
-      <text class="tab {{test?'':'active-tab'}}" bindtap='viewOrders'>订单</text>
+    <template is="shopInfo" data="{{formCount:formCount,imageContainer:imageContainer,...shopInfo}}" />
+    <view class='search-container' bindtap='searchCommodity'>
+      <icon class='search-icon' size='15' type="search" color='#aaa'></icon>
+      <input class='search-box' placeholder='请输入要搜索的商品' placeholder-class='placeholder-class' disabled />
     </view>
-    <!-- <scroll-view scroll-x> -->
-    <block wx:if="{{test}}">
-      <view class='commodity-container'>
-        <view class='commodity-kind'>
-          <scroll-view class='commodity-kind-container' scroll-y>
-            <block wx:for="{{commodityKinds}}">
-              <view data-name="{{item.name}}" class="commodity-kind-list {{item.selected?'commodity-kind-active':''}}" bindtap='changeTab'>{{item.name}}</view>
-            </block>
-          </scroll-view>
-        </view>
-        <view class='commodity-list'>
-          <scroll-view class='commodity-list-container' scroll-y>
-            <block wx:for="{{commodityList}}">
-              <template is="commodityDetails" data="{{...item}}" />
-            </block>
-          </scroll-view>
-        </view>
-      </view>
+  </view>
+  <view class='commodity-kind-tab'>
+    <view class='commodity-kind' bindtap='pickCommodity' data-id="{{kind[0]?kind[0].id:''}}">
+      <image src='{{imageContainer.home5}}' />
+      <text class='commodity-kind-name'>{{kind[0]?kind[0].name:'暂无'}}</text>
+    </view>
+    <view class='commodity-kind' bindtap='pickCommodity' data-id="{{kind[1]?kind[1].id:''}}">
+      <image src='{{imageContainer.home4}}' />
+      <text class='commodity-kind-name'>{{kind[1]?kind[1].name:'暂无'}}</text>
+    </view>
+    <view class='commodity-kind' bindtap='pickCommodity' data-id="{{kind[2]?kind[2].id:''}}">
+      <image src='{{imageContainer.home3}}' />
+      <text class='commodity-kind-name'>{{kind[2]?kind[2].name:'暂无'}}</text>
+    </view>
+    <view class='commodity-kind' bindtap='pickCommodity' data-id="{{kind[3]?kind[3].id:''}}">
+      <image src='{{imageContainer.home2}}' />
+      <text class='commodity-kind-name'>{{kind[3]?kind[3].name:'暂无'}}</text>
+    </view>
+    <view class='commodity-kind' bindtap='pickCommodity'>
+      <image src='{{imageContainer.home1}}' />
+      <text>更多</text>
+    </view>
+  </view>
+  <swiper class='swiper-container' autoplay="true">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" />
+      </swiper-item>
     </block>
-    <block wx:else>
-      <scroll-view scroll-y style='height:90%;'>
-        <block wx:for="{{orderList}}">
-          <template is="orderDetails" data="{{...item}}" />
+  </swiper>
+  <!-- 特价 -->
+  <block wx:if="{{bargainList.length}}">
+    <view class='special-price-container'>
+      <view class='special-price-header'>
+        <image class='special-price-image' src='{{imageContainer.homeSpecialPrice}}' />
+        <image class='view-detail-image' src='{{imageContainer.homeArrowSmall}}' bindtap='viewCommodityList' />
+      </view>
+      <scroll-view class='special-price-scroll-view' scroll-x="true">
+        <block wx:for="{{bargainList}}">
+          <view class='special-price-item' data-id="{{item.id}}" bindtap='viewCommodityDetail'>
+            <image class='special-price-commodity-image' mode='aspectFill' src='{{item.commodityUrlSmall}}' />
+            <text class='special-price-item-title'>{{item.name}}</text>
+            <view class='special-price-item-footer'>
+              <text class='special-price'>￥{{item.bargainPrice}}</text>
+              <text class='old-price'>￥{{item.price}}</text>
+            </view>
+          </view>
         </block>
       </scroll-view>
-    </block>
-  </view>
-  <block wx:if="{{test}}">
-    <template is="shoppingCart" />
+    </view>
   </block>
-  <modal hidden="{{hiddenModal}}" title="{{modalTitle}}" no-cancel="true" confirm-text="知道了" bindconfirm="hideModal"></modal>
+  <!-- 新品 -->
+  <view class='new-commodity-container'>
+    <view class='new-commodity-header'>
+      <image class='new-commodity-image' src='{{imageContainer.homeNewCommodity}}' />
+      <image class='view-detail-image' src='{{imageContainer.homeArrowSmall}}' bindtap='viewCommodityList' />
+    </view>
+    <view class='new-commodity-body'>
+      <block wx:for="{{newList}}">
+        <view class='new-commodity-item' data-id="{{item.id}}" bindtap='viewCommodityDetail'>
+          <view class='new-commodity-image-container'>
+            <image class='new-commodity-item-image' mode='aspectFill' src='{{item.commodityUrlSmall}}' />
+            <image class='new-commodity-icon' src='{{imageContainer.newCommodity}}' />
+          </view>
+          <text class='new-commodity-item-title'>{{item.name}}</text>
+          <text class='new-commodity-price'>￥{{item.bargainPrice?item.bargainPrice:item.price}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 热销 -->
+  <view class='new-commodity-container'>
+    <view class='new-commodity-header'>
+      <image class='special-price-image' src='{{imageContainer.homeHotSell}}' />
+      <image class='view-detail-image' src='{{imageContainer.homeArrowSmall}}' bindtap='viewCommodityList' />
+    </view>
+    <view class='new-commodity-body'>
+      <block wx:for="{{hotList}}">
+        <view class='new-commodity-item' data-id="{{item.id}}" bindtap='viewCommodityDetail'>
+          <view class='new-commodity-image-container'>
+            <image class='new-commodity-item-image' mode='aspectFill' src='{{item.commodityUrlSmall}}' />
+            <image class='hot-sell-icon' src='{{imageContainer.hotSell}}' />
+          </view>
+          <text class='new-commodity-item-title'>{{item.name}}</text>
+          <text class='new-commodity-price'>￥{{item.bargainPrice?item.bargainPrice:item.price}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='footer'>
+    <view class='footer-line'></view>
+    <text>我是有底线的</text>
+    <view class='footer-line'></view>
+  </view>
 </view>
+
+<block wx:if="{{showShopInfo}}">
+  <view class='drawer-screen'>
+  </view>
+  <view class="drawer_box">
+    <view class='drawer_box-header'>
+      <image class='msgbox-logo' mode='aspectFill' src='{{shopInfo.logoUrl}}' />
+      <text class='msgbox-title'>{{shopInfo.name}}</text>
+      <view class='msgbox-dispath'>
+        <text>￥{{shopInfo.servicePrice||'0'}}起送</text>
+        <text class='shop-details-dispath-servered'>|</text>
+        <text>{{shopInfo.serviceTime}}分钟送达</text>
+      </view>
+      <text class="msgbox-info">{{shopInfo.serviceTimeEnd}}之后不提供配送，请到店自取</text>
+      <view class='msgbox-cutline'></view>
+    </view>
+    <view class='drawer_box-body'>
+      <view class='shop-info-item'>
+        <image src='{{imageContainer.msgbox1}}' />
+        <text class='shop-info-key'>联系人</text>
+        <text class='shop-info-value'>{{shopInfo.linkman}}</text>
+      </view>
+      <view class='shop-info-item'>
+        <image src='{{imageContainer.msgbox2}}' />
+        <text class='shop-info-key'>地址</text>
+        <text class='shop-info-value'>{{shopInfo.lsbShopAddress.address}}</text>
+      </view>
+      <view class='shop-info-item'>
+        <image src='{{imageContainer.msgbox3}}' />
+        <text class='shop-info-key'>配送时间段</text>
+        <text class='shop-info-value'>{{shopInfo.serviceTimeStart}} - {{shopInfo.serviceTimeEnd}}</text>
+      </view>
+      <view class='shop-info-item'>
+        <image src='{{imageContainer.msgbox4}}' />
+        <text class='shop-info-key'>营业时间段</text>
+        <text class='shop-info-value'>{{shopInfo.businessTimeStart}} - {{shopInfo.businessTimeEnd}}</text>
+      </view>
+      <view class='msgbox-cutline' style='margin-top:10rpx;'></view>
+    </view>
+    <view class='drawer_box-footer'>
+      <text class='msg-notice-title'>商家公告</text>
+      <text class='msg-notice-text'>{{shopInfo.notice}}</text>
+    </view>
+    <block wx:if="{{isShopkeepers}}">
+      <form bindsubmit="login" report-submit='true' class='login-form'>
+        <button form-type="submit" class='login-btn'>商家后台</button>
+      </form>
+    </block>
+    <image class='clear-icon' src='{{imageContainer.close}}' bindtap='hideShopInfo' />
+  </view>
+</block>

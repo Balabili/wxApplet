@@ -1,13 +1,13 @@
 <template name="orderedItemDetails">
   <view class='order-item-container'>
-    <image src="{{image}}"></image>
+    <image src="{{img}}"></image>
     <view class='order-item-details'>
       <view class='order-item-header'>
-        <text>你大爷</text>
+        <text>{{name}}</text>
         <text>x{{count}}</text>
       </view>
       <view class='order-item-footer'>
-        <text class='order-item-weightage'>{{weightage}}</text>
+        <text class='order-item-weightage'>{{standard}}</text>
         <text class='order-item-price'>￥{{price}}</text>
       </view>
     </view>
@@ -15,41 +15,41 @@
 </template>
 
 <view class="container" style="background-color:#F5F5F5;">
-  <block wx:if="">
-    <view class='address-container'>
+  <block wx:if="{{address.name}}">
+    <view class='address-container' bindtap='addAddress'>
       <view class='address-info-container'>
         <view class='address-header'>
-          <image class='address-icon' src="../../images/四月是你的谎言.jpg"></image>
-          <text class='address-name'>经开区浦东路2661号 优格信息科技有限公司</text>
+          <image class='address-icon' src="{{imageContainer.position}}"></image>
+          <text class='address-name'>{{address.address}}</text>
         </view>
-        <text class='user-contact-info'>李先生 138888888888</text>
+        <text class='user-contact-info'>{{address.name}}{{address.sex==='1'?'先生':'女士'}} {{address.phone}}</text>
       </view>
-      <image class='view-details-icon' src="../../images/四月是你的谎言.jpg"></image>
+      <image class='view-details-icon' src="{{imageContainer.detail}}"></image>
     </view>
   </block>
   <block wx:else>
     <view class='add-address-container' bindtap='addAddress'>
       <view class='add-address'>
-        <text class='add-address-icon'>+</text>
+        <image class='add-address-icon' src="{{imageContainer.addAddress}}" />
         <text class='add-address-text'>新增收货地址</text>
       </view>
-      <image class='view-details-icon' src="../../images/四月是你的谎言.jpg"></image>
+      <image class='view-details-icon' src="{{imageContainer.detail}}"></image>
     </view>
   </block>
   <view class='arrival-time-container'>
-    <image src="../../images/四月是你的谎言.jpg"></image>
+    <image src="{{imageContainer.wait}}"></image>
     <view class='arrival-time-text'>立即送出（
-      <text class='arrival-time'>大约12：44送达</text>）
+      <text class='arrival-time'>大约{{orderStorage.finishTime}}送达</text>）
     </view>
   </view>
   <view class='order-items-container'>
-    <block wx:for="{{orderItemList}}">
+    <block wx:for="{{orderStorage.detailList}}">
       <template is="orderedItemDetails" data="{{...item}}" />
     </block>
     <view class='total-account'>
       <text>合计:</text>
       <text class='rmb'>￥</text>
-      <text class='commodity-price'>666.6</text>
+      <text class='commodity-price'>{{orderStorage.total}}</text>
     </view>
   </view>
   <view class='payment-pattern'>
@@ -59,7 +59,7 @@
   <view class='remark-container' bindtap='addRemark'>
     <text style="margin-left:30rpx;">备注</text>
     <view class='remark-details'>
-      <image class='view-details-icon' src="../../images/四月是你的谎言.jpg"></image>
+      <image class='view-details-icon' src="{{imageContainer.detail}}"></image>
       <text class="remark-text {{remark?'remark-active':''}}">{{remark||'有其他需求请备注'}}</text>
     </view>
   </view>
@@ -67,8 +67,8 @@
     <view class='submit-order-price'>
       <text style='margin-left:30rpx;'>合计:</text>
       <text class='rmb'>￥</text>
-      <text class='commodity-price'>{{price}}</text>
+      <text class='commodity-price'>{{orderStorage.total}}</text>
     </view>
-    <text class='submit-order-btn'>提交订单</text>
+    <text class='submit-order-btn' bindtap='submitOrder'>提交订单</text>
   </view>
 </view>

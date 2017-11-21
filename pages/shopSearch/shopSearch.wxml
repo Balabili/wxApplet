@@ -1,0 +1,101 @@
+<template name="commodityDetails">
+  <view class='commodity-item-container' data-id='{{id}}' catchtap='operateCommodity'>
+    <view class='commodity-details'>
+      <view class='commodity-image-container'>
+        <image src='{{commodityUrlSmall}}' lazy-load='true'></image>
+      </view>
+      <view class='commodity-description'>
+        <view class='commodity-header'>
+          <text class='commodity-title'>{{name}}</text>
+          <text class='commodity-edit' data-status="5">编辑</text>
+        </view>
+        <view class='commodity-label-container'>
+          <block wx:if="{{isNew!=='0'}}">
+            <text class='commodity-label' style='background-color:#5DC355;'>新品</text>
+          </block>
+          <block wx:if="{{isBargain!=='0'}}">
+            <text class='commodity-label' style='background-color:#7D77FF;'>特价</text>
+          </block>
+          <block wx:if="{{isHot!=='0'}}">
+            <text class='commodity-label' style='background-color:#FF7453;'>热销</text>
+          </block>
+        </view>
+        <view class='commodity-weightage-container'>
+          <text class='commodity-weightage'>{{standard}}</text>
+          <text class='delete-commodity' data-status="6">删除</text>
+        </view>
+        <view class='commodity-footer'>
+          <view>
+            <text class='rmb'>￥</text>
+            <text class='commodity-price'>{{isBargain==="1"?bargainPrice:price}}</text>
+            <block wx:if="{{isBargain==='1'}}">
+              <text class='special-price'>￥{{price}}</text>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{sellOut==='1'}}">
+      <image class='sold-out-image' src='{{imageContainer.soldOut}}' />
+    </block>
+    <view class='commodity-button-group'>
+      <block wx:if="{{sellOut!=='1'}}">
+        <text class="commodity-button" style='background-color:#595959;' data-status="4">售罄</text>
+        <text class="commodity-button {{isHot==='1'?'cancel-button':''}}" data-status="3">{{isHot==='1'?'取消热销':'设为热销'}}</text>
+        <text class="commodity-button {{isBargain==='1'?'cancel-button':''}}" data-status="2">{{isBargain==='1'?'取消特价':'设为特价'}}</text>
+        <text class="commodity-button {{isNew==='1'?'cancel-button':''}}" style='margin-right:24rpx;' data-status="1">{{isNew==='1'?'取消新品':'设为新品'}}</text>
+      </block>
+      <block wx:else>
+        <text class="commodity-button" style='background-color:#595959;' data-status="4">有货</text>
+      </block>
+    </view>
+  </view>
+</template>
+
+<view class="container">
+  <view class="search-header">
+    <input id="searchBox" type='text' confirm-type='search' placeholder='输入您想要搜索的商品' placeholder-class='placeholder-class' value="{{inputValue}}" bindinput="setInputBoxValue" bindconfirm='searchGoods' focus='{{textboxFocus}}' />
+    <text class='search' bindtap="searchGoods">搜索</text>
+    <icon class='search-icon' size='15' type="search" color='#8D8D8D'></icon>
+    <block wx:if="{{inputValue}}">
+      <icon class='clear-icon' size='15' type="clear" bindtap='clearSearchResult'></icon>
+    </block>
+  </view>
+  <block wx:if="{{historyRecord.length && !searchList.length && !showNoSearchResult}}">
+    <view class="search-history">
+      <view class="search-history-header">
+        <text class='history-title'>历史搜索</text>
+        <image class='empty-image' src="{{imageContainer.empty}}" bindtap='emptyHistory'></image>
+      </view>
+      <view class='history-search-container'>
+        <block wx:for="{{historyRecord}}">
+          <text class='history-search-box' data-name="{{item}}" bindtap='searchHisotory'>{{item}}</text>
+        </block>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{searchList.length>0}}">
+    <view class='commodity-container'>
+      <block wx:for="{{searchList}}">
+        <template is="commodityDetails" data="{{imageContainer:imageContainer,...item}}"></template>
+      </block>
+    </view>
+  </block>
+  <block wx:if="{{showNoSearchResult && !searchList.length}}">
+    <view>
+      <image class='no-search-result' src='{{imageContainer.emptyResult}}'></image>
+    </view>
+  </block>
+</view>
+
+<block wx:if="{{showSpecialPrice}}">
+  <view class='drawer-screen'>
+  </view>
+  <view class="drawer_box">
+    <input class="special-price-textbox" type='digit' name="price" value="{{barginPrice}}" focus='{{showSpecialPrice}}' placeholder='请设置商品特价价格' bindinput='changePrice' placeholder-class='placeholder-class'></input>
+    <view class="btn-container">
+      <text class='btn btn-cancel' bindtap='cancelBargin'>取消</text>
+      <text class='btn btn-ok' bindtap='setBargin'>确定</text>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,6 @@
+<view class="container">
+  <view class='kind-container'>
+    <input class='kind-textbox' type='text' value='{{kindName}}' placeholder='请输入新的分类(最多10个字)' placeholder-class='placeholder-class' bindinput='changeText' bindblur='setText' focus='true' />
+  </view>
+  <button class='save-kind-name' type='primary' bindtap='saveKindName'>保存分类</button>
+</view>

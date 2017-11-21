@@ -1,11 +1,7 @@
-page {
-  min-height: 100%;
-}
-
 .view-details-icon {
   margin-right: 30rpx;
   height: 50rpx;
-  width: 30rpx;
+  width: 50rpx;
 }
 
 /* 已添加地址信息 */
@@ -35,18 +31,19 @@ page {
 .address-icon {
   height: 30rpx;
   width: 30rpx;
-  margin: 0 30rpx;
+  margin-left: 30rpx;
 }
 
 .address-name {
   width: 580rpx;
+  margin-left: 20rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .user-contact-info {
-  margin-left: 90rpx;
+  margin-left: 80rpx;
   margin-top: 10rpx;
   color: #909090;
 }
@@ -64,18 +61,15 @@ page {
 }
 
 .add-address {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
   margin-left: 30rpx;
 }
 
 .add-address-icon {
-  display: inline-block;
   height: 30rpx;
   width: 30rpx;
-  line-height: 28rpx;
-  border-radius: 30rpx;
-  text-align: center;
-  border: 1rpx solid #7a80fa;
-  color: #7a80fa;
 }
 
 .add-address-text {
@@ -98,10 +92,11 @@ page {
   height: 30rpx;
   width: 30rpx;
   border-radius: 30rpx;
-  margin: 0 30rpx;
+  margin-left: 30rpx;
 }
 
 .arrival-time-text {
+  margin-left: 20rpx;
   font-size: 30rpx;
 }
 
@@ -179,7 +174,7 @@ page {
   width: 30%;
   height: 100rpx;
   line-height: 100rpx;
-  background-color: #7a80fa;
+  background-color: #1aad19;
   font-size: 34rpx;
   color: #fff;
   text-align: center;

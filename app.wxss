@@ -1,6 +1,5 @@
-/**app.wxss**/
-
 page {
+  position: relative;
   min-height: 100%;
   background-color: #f5f5f5;
 }
@@ -15,127 +14,14 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100%;
+  width: 100%;
 }
 
-/* 商家模板start */
-
-.shop-details-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  height: 160rpx;
+.placeholder-class {
+  font-size: 28rpx;
+  color: #ccc;
 }
-
-.shop-details {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.shop-details image {
-  height: 150rpx;
-  width: 150rpx;
-}
-
-.shop-details-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: 20rpx;
-  height: 100%;
-}
-
-.shop-details-header {
-  display: flex;
-  align-items: center;
-  height: 60rpx;
-}
-
-.shop-details-title {
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #000;
-}
-
-.shop-details-status {
-  display: inline-block;
-  height: 38rpx;
-  width: 97rpx;
-  line-height: 38rpx;
-  border-radius: 8rpx;
-  margin-left: 20rpx;
-  font-size: 22rpx;
-  text-align: center;
-}
-
-.shop-details-status-active {
-  background-color: #eef9eb;
-  color: #54c536;
-}
-
-.shop-details-status-deactive {
-  background-color: #fff1ec;
-  color: #fa8b83;
-}
-
-.shop-details-comment {
-  color: #ff6c5d;
-  font-size: 24rpx;
-  width: 400rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.shop-details-dispath {
-  height: 50rpx;
-  line-height: 50rpx;
-  color: #999;
-  font-size: 24rpx;
-}
-
-.shop-details-dispath-servered {
-  margin: 0 20rpx;
-  color: #eee;
-}
-
-.shop-details-icon {
-  height: 50rpx;
-  width: 50rpx;
-}
-
-.shop-notice-container {
-  display: flex;
-  align-items: center;
-  width: 90%;
-  height: 70rpx;
-  line-height: 70rpx;
-}
-
-.shop-notice {
-  display: inline-block;
-  height: 36rpx;
-  width: 67rpx;
-  text-align: center;
-  line-height: 36rpx;
-  border-radius: 8rpx;
-  color: #fff;
-  font-size: 20rpx;
-  background-color: #ff6d5e;
-}
-
-.shop-notice-details {
-  margin-left: 20rpx;
-  width: 500rpx;
-  color: #999;
-  font-size: 24rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* 商家详情end */
 
 /* 商品价格start */
 

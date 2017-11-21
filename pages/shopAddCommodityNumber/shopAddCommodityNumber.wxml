@@ -1,0 +1,6 @@
+<view class="container">
+  <view class='commodity-number-container'>
+    <input class='commodity-number-textbox' type='number' value='{{commodityNumber}}' placeholder='请输入商品编号' placeholder-class='placeholder-class' bindinput='changeCommodityNumber' bindblur='changeCommodityNumber' focus='true' />
+  </view>
+  <button class='save-commodity-number' type='primary' bindtap='saveCommodityNumber'>保存</button>
+</view>

@@ -1,0 +1,43 @@
+<template name="orderDetails">
+  <view class='order-container' data-id="{{id}}" bindtap='viewOrderDetails'>
+    <view class='image-container'>
+      <image class='order-image' src="{{img}}"></image>
+    </view>
+    <view class='order-details-container'>
+      <view class='order-details-header'>
+        <text class='order-details-title'>{{name}}</text>
+        <block wx:if="{{status==='2'}}">
+          <text class="order-details-status">已付款</text>
+        </block>
+        <block wx:else>
+          <image class='complete-img' src="{{completeImg}}" />
+        </block>
+      </view>
+      <text class='order-details-order-time'>下单时间：{{createDate}}</text>
+      <view class='order-details-footer'>
+        <view>
+          <text class='rmb'>￥</text>
+          <text class='commodity-price'>{{total}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<view class="container">
+  <view class='tab-bar'>
+    <view data-index="0" class="{{tabIndex===0?'tab-active':''}}" bindtap='changeTab'>
+      <text>新订单</text>
+      <text class='order-count'>({{waitingCount}})</text>
+    </view>
+    <view data-index="1" class="{{tabIndex===1?'tab-active':''}}" bindtap='changeTab'>
+      <text>历史订单</text>
+      <text class='order-count'>({{completeCount}})</text>
+    </view>
+  </view>
+  <view class='order-list-container'>
+    <block wx:for="{{orderList}}">
+      <template is="orderDetails" data="{{completeImg:completeImg,...item}}" />
+    </block>
+  </view>
+</view>

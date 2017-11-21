@@ -1,0 +1,112 @@
+<template name="commodityDetails">
+  <view class='commodity-item-container' data-id='{{id}}' catchtap='operateCommodity'>
+    <view class='commodity-details'>
+      <view class='commodity-image-container'>
+        <image src='{{commodityUrlSmall}}' mode='aspectFill' lazy-load='true' />
+      </view>
+      <view class='commodity-description'>
+        <view class='commodity-header'>
+          <text class='commodity-title'>{{name}}</text>
+          <text class='commodity-edit' data-status="5">编辑</text>
+        </view>
+        <view class='commodity-label-container'>
+          <block wx:if="{{isNew!=='0'}}">
+            <text class='commodity-label' style='background-color:#5DC355;'>新品</text>
+          </block>
+          <block wx:if="{{isBargain!=='0'}}">
+            <text class='commodity-label' style='background-color:#7D77FF;'>特价</text>
+          </block>
+          <block wx:if="{{isHot!=='0'}}">
+            <text class='commodity-label' style='background-color:#FF7453;'>热销</text>
+          </block>
+        </view>
+        <view class='commodity-weightage-container'>
+          <text class='commodity-weightage'>{{standard}}</text>
+          <text class='delete-commodity' data-status="6">删除</text>
+        </view>
+        <view class='commodity-footer'>
+          <view>
+            <text class='rmb'>￥</text>
+            <text class='commodity-price'>{{isBargain==="1"?bargainPrice:price}}</text>
+            <block wx:if="{{isBargain==='1'}}">
+              <text class='special-price'>￥{{price}}</text>
+            </block>
+          </view>
+          <block wx:if="{{tabIndex===3}}">
+            <text class="commodity-button cancel-button" data-status="1">取消新品</text>
+          </block>
+          <block wx:if="{{tabIndex===1}}">
+            <text class="commodity-button cancel-button" data-status="2">取消特价</text>
+          </block>
+          <block wx:if="{{tabIndex===2}}">
+            <text class="commodity-button cancel-button" data-status="3">取消热销</text>
+          </block>
+          <block wx:if="{{tabIndex===4}}">
+            <text class="commodity-button" style='background-color:#595959;' data-status="4">有货</text>
+          </block>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{!tabIndex}}">
+      <view class='commodity-button-group'>
+        <text class="commodity-button {{isNew==='1'?'cancel-button':''}}" data-status="1">{{isNew==='1'?'取消新品':'设为新品'}}</text>
+        <text class="commodity-button {{isBargain==='1'?'cancel-button':''}}" data-status="2">{{isBargain==='1'?'取消特价':'设为特价'}}</text>
+        <text class="commodity-button {{isHot==='1'?'cancel-button':''}}" data-status="3">{{isHot==='1'?'取消热销':'设为热销'}}</text>
+        <text class="commodity-button" style='background-color:#595959;' data-status="4">售罄</text>
+      </view>
+    </block>
+  </view>
+</template>
+
+<view class="container">
+  <view class='search-container' bindtap='searchCommodity'>
+    <view class='search-icon'>
+      <icon class='icon' type='search' size='20' />
+    </view>
+    <input class='search-box' type='text' name="search" placeholder='输入您想要搜索的商品' placeholder-class='placeholder-class' disabled='true' />
+  </view>
+  <view class='tab-container'>
+    <view data-index='0' class="{{tabIndex===0?'tab-active':''}}" bindtap='changeTaskTab'>
+      <text>在售</text>
+    </view>
+    <view data-index='1' class="{{tabIndex===1?'tab-active':''}}" bindtap='changeTaskTab'>
+      <text>今日特价</text>
+    </view>
+    <view data-index='2' class="{{tabIndex===2?'tab-active':''}}" bindtap='changeTaskTab'>
+      <text>热销商品</text>
+    </view>
+    <view data-index='3' class="{{tabIndex===3?'tab-active':''}}" bindtap='changeTaskTab'>
+      <text>新品上架</text>
+    </view>
+    <view data-index='4' class="{{tabIndex===4?'tab-active':''}}" bindtap='changeTaskTab'>
+      <text>售罄</text>
+    </view>
+  </view>
+  <view class='commodity-container'>
+    <view class='commodity-kind'>
+      <scroll-view class='commodity-kind-container' scroll-y>
+        <block wx:for="{{commodityKinds}}">
+          <view data-id="{{item.id}}" class="commodity-kind-list {{item.selected?'commodity-kind-active':''}}" bindtap='changeTab'>{{item.name}}</view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class='commodity-list'>
+      <scroll-view class='commodity-list-container' scroll-y>
+        <block wx:for="{{commodityList}}">
+          <template is="commodityDetails" data="{{tabIndex:tabIndex,...item}}" />
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{showSpecialPrice}}">
+  <view class='drawer-screen'>
+  </view>
+  <view class="drawer_box">
+    <input class="special-price-textbox" type='digit' name="price" value="{{barginPrice}}" focus="{{showSpecialPrice}}" placeholder='请设置商品特价价格' bindinput='changePrice' placeholder-class='placeholder-class'></input>
+    <view class="btn-container">
+      <text class='btn btn-cancel' bindtap='cancelBargin'>取消</text>
+      <text class='btn btn-ok' bindtap='setBargin'>确定</text>
+    </view>
+  </view>
+</block>

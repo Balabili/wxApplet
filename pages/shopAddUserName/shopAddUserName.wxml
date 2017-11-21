@@ -1,0 +1,6 @@
+<view class="container">
+  <view class='username-container'>
+    <input class='username-textbox' type='text' value='{{username}}' placeholder='请输入联系人姓名' placeholder-class='placeholder-class' bindinput='changeUsername' bindblur='changeUsername' focus='true' />
+  </view>
+  <button class='save-username' type='primary' bindtap='saveUsername'>完成</button>
+</view>

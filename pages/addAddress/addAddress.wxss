@@ -1,15 +1,10 @@
-page {
-  height: 100%;
-  background-color: #f5f5f5;
-}
-
 .header-icon {
   display: inline-block;
   height: 30rpx;
-  width: 4rpx;
-  background-color: #7a80fa;
+  width: 8rpx;
+  background-color: #1aad19;
   margin-left: 30rpx;
-  margin-right: 15rpx;
+  margin-right: 30rpx;
 }
 
 .placeholder-class {
@@ -19,6 +14,7 @@ page {
 
 .address-form {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +22,7 @@ page {
 
 .contact-info {
   margin-top: 20rpx;
-  height: 400rpx;
+  height: 380rpx;
   width: 100%;
   background-color: #fff;
   font-size: 30rpx;
@@ -37,6 +33,7 @@ page {
   align-items: center;
   height: 80rpx;
   font-size: 34rpx;
+  color: #a9a9a9;
 }
 
 .contact-name-container, .contact-phone-container {
@@ -52,7 +49,7 @@ page {
 }
 
 .contact-name-textbox {
-  width: 500rpx;
+  width: 450rpx;
 }
 
 .radio-group {
@@ -89,22 +86,25 @@ page {
 
 .delivery-address {
   display: flex;
+  display: -webkit-flex;
   margin-top: 50rpx;
-  margin-left: 30rpx;
 }
 
 .delivery-address-details {
   display: flex;
+  display: -webkit-flex;
   align-items: center;
-  margin: 20rpx 0 0 30rpx;
+  margin-top: 20rpx;
 }
 
 .delivery-address-key {
+  margin-left: 30rpx;
   display: inline-block;
   width: 250rpx;
 }
 
 .delivery-address-value {
+  width: 420rpx;
   display: flex;
   align-items: center;
 }
@@ -130,6 +130,6 @@ page {
 .save-btn {
   width: 90%;
   margin: 60rpx auto;
-  background-color: #7a80fa;
+  background-color: #1aad19;
   color: #fff;
 }

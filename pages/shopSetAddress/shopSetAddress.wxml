@@ -1,0 +1,12 @@
+<view class="container">
+  <view class='address-item' bindtap='selectAddress'>
+    <text class='address-item-key'>选择地址</text>
+    <text class="address-info {{address?'':'address-deactive'}}">{{address?address:'地区信息'}}</text>
+    <image class='address-icon' src="{{positionImage}}"></image>
+  </view>
+  <view class='address-item'>
+    <text class='address-item-key'>详细地址</text>
+    <input class='address-textbox' type='text' value='{{addressDetail}}' placeholder='街道门牌信息' placeholder-class='placeholder-class' bindinput='changeAddressDetail' bindblur='changeAddressDetail' />
+  </view>
+  <button class='save-address' type='primary'  bindtap='addAddress'>保存信息</button>
+</view>

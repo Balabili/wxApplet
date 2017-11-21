@@ -10,7 +10,7 @@ page {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   background-color: #fff;
   font-size: 30rpx;
 }
@@ -87,8 +87,8 @@ page {
 }
 
 .contact-merchant image {
-  height: 30rpx;
-  width: 30rpx;
+  height: 50rpx;
+  width: 50rpx;
   margin-right: 10rpx;
 }
 
@@ -183,7 +183,7 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 500rpx;
+  width: 530rpx;
 }
 
 .dispatch-from {
@@ -196,6 +196,7 @@ page {
   display: flex;
   flex-direction: column;
   margin-top: 30rpx;
+  margin-bottom: 30rpx;
   width: 100%;
   background-color: #fff;
   font-size: 30rpx;
@@ -206,5 +207,17 @@ page {
 }
 
 .order-payment-way {
+  margin-top: 30rpx;
+}
+
+.order-remark {
+  display: flex;
+  display: -webkit-flex;
+  align-items: flex-start;
   margin: 30rpx 0;
+}
+
+.remark-text {
+  display: inline-block;
+  width: 530rpx;
 }

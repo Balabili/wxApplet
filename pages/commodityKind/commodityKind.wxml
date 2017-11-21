@@ -1,0 +1,123 @@
+<template name="commodityDetails">
+  <view class="commodity-item-container {{count?'commodity-selected':''}}" data-id='{{id}}' catchtap='commodityOperate'>
+    <view class='commodity-details'>
+      <view class='commodity-image-container'>
+        <image src='{{commodityUrlSmall}}' mode='aspectFill' lazy-load='true'></image>
+      </view>
+      <view class='commodity-description'>
+        <view class='commodity-header'>
+          <text class='commodity-title'>{{name}}</text>
+        </view>
+        <view class='commodity-label-container'>
+          <block wx:if="{{isNew!=='0'}}">
+            <text class='commodity-label' style='background-color:#5DC355;'>新品</text>
+          </block>
+          <block wx:if="{{isBargain!=='0'}}">
+            <text class='commodity-label' style='background-color:#7D77FF;'>特价</text>
+          </block>
+          <block wx:if="{{isHot!=='0'}}">
+            <text class='commodity-label' style='background-color:#FF7453;'>热销</text>
+          </block>
+        </view>
+        <text class='commodity-weightage'>{{standard}}</text>
+        <view class='commodity-footer'>
+          <view class='commodity-footer-price-container'>
+            <text class='rmb'>￥</text>
+            <text class='commodity-price'>{{bargainPrice?bargainPrice:price}}</text>
+            <block wx:if="{{bargainPrice}}">
+              <text class='special-price'>￥{{price}}</text>
+            </block>
+          </view>
+          <block wx:if="{{!shopClosed}}">
+            <view class='commodity-operation'>
+              <image src='{{imageContainer.add}}' data-id='add'></image>
+              <block wx:if="{{count}}">
+                <text>{{count}}</text>
+                <image src='{{imageContainer.subtract}}' data-id='subtract'></image>
+              </block>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="shoppingCart">
+  <block wx:if="{{!shopClosed}}">
+    <view class='shopping-cart-container'>
+      <view class="shopping-cart-price" bindtap='viewCartDetails'>
+        <block wx:if="{{totalPrice}}">
+          <text class='shopping-cart-allprice'>￥{{totalPrice?totalPrice:''}}</text>
+          <image class='cart-image' src="{{imageContainer.hasCommodity}}" />
+        </block>
+        <block wx:else>
+          <image class='cart-image' src="{{imageContainer.noCommodity}}" />
+        </block>
+        <block wx:if="{{selectedCount}}">
+          <text class='shopping-cart-count'>{{selectedCount?selectedCount:''}}</text>
+        </block>
+      </view>
+      <text class="shopping-cart-btn {{totalPrice-dispatchPrice>=0?'shopping-cart-btn-active':'shopping-cart-btn-deactive'}}" bindtap='settleAccount'>{{totalPrice-dispatchPrice>=0?'去结算':'还差￥'+(dispatchPrice-totalPrice)+'起送'}}</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='store-closed'>
+      本店打烊啦
+    </view>
+  </block>
+</template>
+
+<view class="container">
+  <view class='search-container' bindtap='searchCommodity'>
+    <icon class='search-icon' size='15' type="search" color='#888'></icon>
+    <input class='search-box' placeholder='搜索商品' placeholder-class='placeholder-class' disabled='true' />
+  </view>
+  <view class='commodity-container'>
+    <view class='commodity-kind'>
+      <scroll-view class='commodity-kind-container' scroll-y='true'>
+        <block wx:for="{{commodityKinds}}">
+          <view data-id="{{item.id}}" class="commodity-kind-list {{item.selected?'commodity-kind-active':''}}" bindtap='changeTab'>
+            <text>{{item.name}}</text>
+            <block wx:if="{{item.count}}">
+              <text class='commodity-kind-list-count'>{{item.count}}</text>
+            </block>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class='commodity-list'>
+      <scroll-view class='commodity-list-container' scroll-y>
+        <block wx:for="{{commodityList}}">
+          <template is="commodityDetails" data="{{shopClosed:shopClosed,imageContainer:imageContainer,...item}}" />
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+
+<template is="shoppingCart" data="{{shopClosed:shopClosed,selectedCount:selectedCount,totalPrice:totalPrice,dispatchPrice:dispatchPrice,imageContainer:imageContainer}}" />
+
+<block wx:if="{{showCartDetails}}">
+  <view class='drawer-screen' bindtap='hideCartDetails'>
+  </view>
+  <view class="drawer_box">
+    <view class='shopping-cart-title'>
+      <text style='margin-left:30rpx;'>已选商品</text>
+      <image class='empty-shopping-cart' src='{{imageContainer.empty}}' bindtap='emptyShoppingCart' />
+    </view>
+    <scroll-view scroll-y class='shopping-cart-scroll-view'>
+      <block wx:for="{{shoppingCart}}">
+        <view class='shopping-cart-item' data-id="{{item.id}}" bindtap='commodityOperate'>
+          <text class='shopping-cart-item-name'>{{item.name}}</text>
+          <text class='shopping-cart-item-price'>￥{{(item.bargainPrice?item.bargainPrice:item.price)*item.count}}</text>
+          <view class='shopping-cart-operation'>
+            <image src='{{imageContainer.add}}' data-id='add' />
+            <text>{{item.count}}</text>
+            <image src='{{imageContainer.subtract}}' data-id='subtract' />
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</block>

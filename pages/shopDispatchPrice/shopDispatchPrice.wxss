@@ -1,0 +1,18 @@
+.price-container {
+  margin-top: 20rpx;
+  background-color: #fff;
+  width: 100%;
+}
+
+.price-textbox {
+  width: 90%;
+  padding: 20rpx 0;
+  padding-left: 30rpx;
+  font-size: 30rpx;
+}
+
+.save-price {
+  margin-top: 30rpx;
+  width: 95%;
+  color: #fff;
+}

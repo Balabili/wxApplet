@@ -1,0 +1,6 @@
+<view class="container">
+  <view class='phone-container'>
+    <input class='phone-textbox' type='number' value='{{phone}}' placeholder='请输入您的联系方式' placeholder-class='placeholder-class' bindinput='changePhone' bindblur='changePhone' focus='true' />
+  </view>
+  <button class='save-phone' type='primary' bindtap='savePhone'>完成</button>
+</view>

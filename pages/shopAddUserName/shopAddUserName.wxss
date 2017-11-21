@@ -1,0 +1,18 @@
+.username-container {
+  margin-top: 20rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.username-textbox {
+  width: 90%;
+  padding: 20rpx 0;
+  padding-left: 30rpx;
+  font-size: 30rpx;
+}
+
+.save-username {
+  margin-top: 30rpx;
+  width: 95%;
+  color: #fff;
+}

@@ -12,11 +12,11 @@
       <view>
         <radio-group class="radio-group" bindchange="genderChange">
           <view style='margin-left:180rpx;'>
-            <radio id='man' value='man' name="gender" color='#7A80FA' checked='true' />
+            <radio id='man' value='1' name="gender" checked="{{gender==='1'}}" />
             <label for='man'>先生</label>
           </view>
           <view style='margin-left:100rpx;'>
-            <radio id='woman' value='woman' name="gender" color='#7A80FA' />
+            <radio id='woman' value='0' name="gender" checked="{{gender==='0'}}" />
             <label for='woman'>女士</label>
           </view>
         </radio-group>
@@ -35,9 +35,9 @@
       <view class="delivery-address">
         <text class='delivery-address-key'>小区/大厦/学校</text>
         <view class='delivery-address-value' bindtap='chooseLocation'>
-          <image src='../../images/四月是你的谎言.jpg'></image>
-          <text class="address {{address?'':'need-selected'}}">{{address?address:'点击选择'}}</text>
-          <image src='../../images/四月是你的谎言.jpg'></image>
+          <image src='{{imageContainer.position}}'></image>
+          <text class="address {{address?'':'need-selected'}}">{{address.address?address.address:'点击选择'}}</text>
+          <image src='{{imageContainer.detail}}'></image>
         </view>
       </view>
       <view class='between-line'></view>
@@ -48,5 +48,4 @@
     </view>
     <button form-type='submit' class='save-btn'>保存</button>
   </form>
-  <modal hidden="{{hiddenModal}}" title="{{modalTitle}}" no-cancel="true" confirm-text="知道啦" bindconfirm="hideModal"></modal>
 </view>

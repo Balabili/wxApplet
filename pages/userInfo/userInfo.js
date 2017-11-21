@@ -1,78 +1,59 @@
-// pages/userInfo/userInfo.js
+import { api } from '../../utils/util.js';
+
+const { imageUserBaseUrl } = getApp().globalData;
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    imageUserBaseUrl: {
+      wait: imageUserBaseUrl + 'c_wait_pay.png',
+      already: imageUserBaseUrl + 'c_aleady_pay.png',
+      allPay: imageUserBaseUrl + 'c_all_pay.png',
+      detail: imageUserBaseUrl + 'c_home_arrow_small.png',
+    },
+    name: '',
+    headUrl: '',
+    count: 0,
+    address: ''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad(options) {
+    let self = this, userInfo = wx.getStorageSync('lsb_user');
+    api.request('/buyer/account/getMyInfo', { userId: userInfo.openid }).then((result) => {
+      self.setData({
+        name: result.name,
+        headUrl: result.headUrl,
+        count: result.count
+      });
+    }).catch((e) => { console.log(e); });
   },
+  
   viewOrders({ currentTarget }) {
     let index = currentTarget.dataset.index;
-    wx.setStorageSync('orderPageIndex', index );
+    wx.setStorageSync('orderPageIndex', index);
     wx.switchTab({
       url: '/pages/order/order',
     });
   },
+
   selectAddress() {
-    wx.navigateTo({
-      url: '../selectAddress/selectAddress',
+    let userInfo = wx.getStorageSync('lsb_user');
+    if (userInfo) {
+      wx.navigateTo({
+        url: '../selectAddress/selectAddress?from=info',
+      });
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '您点击了拒绝授权，无法添加地址。请删除小程序重新进入。',
+      });
+    }
+  },
+
+  onShow() {
+    let address = wx.getStorageSync('addressStorage');
+    this.setData({
+      address: address.address
     });
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

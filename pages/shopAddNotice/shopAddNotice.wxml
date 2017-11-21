@@ -1,0 +1,7 @@
+<view class="container">
+  <view class='notice-container'>
+    <textarea class='notice-textbox' value='{{notice}}' placeholder='例子：欢迎在本商店选购商品' placeholder-class='placeholder-class' bindinput='changeNotice' bindblur='setNotice' focus='true'></textarea>
+    <text class='notice-length'>{{length||0}}/50</text>
+  </view>
+  <button class='save-notice' type='primary' bindtap='saveNotice'>完成</button>
+</view>

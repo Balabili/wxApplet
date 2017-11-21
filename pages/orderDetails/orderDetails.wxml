@@ -1,35 +1,49 @@
-<import src="../settleAccount/settleAccount.wxml" />
+<template name="orderedItemDetails">
+  <view class='order-item-container'>
+    <image src="{{img}}" mode='aspectFill'></image>
+    <view class='order-item-details'>
+      <view class='order-item-header'>
+        <text>{{name}}</text>
+        <text>x{{count}}</text>
+      </view>
+      <view class='order-item-footer'>
+        <text class='order-item-weightage'>{{standard}}</text>
+        <text class='order-item-price'>￥{{price}}</text>
+      </view>
+    </view>
+  </view>
+</template>
 
 <view class='container'>
-  <view class="payment-status {{paymentStatus?'payment-success-height':'payment-waiting-height'}}">
-    <text class="payment-status-title">{{paymentStatus?'支付成功':'等待支付'}}</text>
-    <block wx:if="{{!paymentStatus}}">
-      <text class="payment-status-notification">请在10分钟内完成支付，超时自动取消</text>
+  <view class="payment-status {{orderInfo.status!=='1'?'payment-success-height':'payment-waiting-height'}}">
+    <text class="payment-status-title">{{orderInfo.status!=='1'?'支付成功':'等待支付'}}</text>
+    <block wx:if="{{orderInfo.status==='1'}}">
+      <text class="payment-status-notification">请在15分钟内完成支付，超时自动取消</text>
     </block>
     <view class='payment-time-container'>
-      <image src="../../images/四月是你的谎言.jpg"></image>
-      <text>{{paymentStatus?'预计送达时间':'等待支付'}}: </text>
-      <text class='payment-time'>10:15</text>
+      <image src="{{imageContainer.wait}}"></image>
+      <text>{{orderInfo.status!=='1'?'预计送达时间':'等待支付'}}: </text>
+      <text class='payment-time'>{{finishTime?finishTime:remainingTime}}</text>
     </view>
-    <block wx:if="{{!paymentStatus}}">
+    <block wx:if="{{orderInfo.status==='1'}}">
       <view class='payment-status-buttons'>
-        <text class="payment-status-cancel">取消订单</text>
-        <text class="payment-status-paynow">立即支付</text>
+        <text class="payment-status-cancel" data-id="{{orderId}}" bindtap='cancelOrder'>取消订单</text>
+        <text class="payment-status-paynow" data-id="{{orderId}}" bindtap='payNow'>立即支付</text>
       </view>
     </block>
   </view>
-  <view class='contact-merchant'>
-    <image src="../../images/四月是你的谎言.jpg"></image>
+  <view class='contact-merchant' bindtap='cantactShop'>
+    <image src="{{imageContainer.call}}" />
     <text>联系商家</text>
   </view>
   <view class='order-items-container'>
-    <block wx:for="{{orderItemList}}">
+    <block wx:for="{{orderInfo.detailList}}">
       <template is="orderedItemDetails" data="{{...item}}" />
     </block>
     <view class='total-account'>
       <text>合计:</text>
       <text class='rmb'>￥</text>
-      <text class='commodity-price'>666.6</text>
+      <text class='commodity-price'>{{orderInfo.total}}</text>
     </view>
   </view>
   <view class='setting-dispatch'>
@@ -40,8 +54,8 @@
     <view class='dispatch-address'>
       <text class='setting-key'>配送地址</text>
       <view class='dispatch-address-details'>
-        <text>刘女士 18844188661</text>
-        <text>吉林省优格信息科技有限公司</text>
+        <text>{{orderInfo.userName}} {{orderInfo.phone}}</text>
+        <text>{{orderInfo.address}} {{orderInfo.detailAddress}}</text>
       </view>
     </view>
     <view class='dispatch-from'>
@@ -52,15 +66,19 @@
   <view class='order-details'>
     <view class='order-number'>
       <text class='setting-key'>订单号码</text>
-      <text>11111111111111111111</text>
+      <text>{{orderInfo.number}}</text>
     </view>
     <view class='order-time'>
       <text class='setting-key'>订单时间</text>
-      <text>2017-10-10 12：55：44</text>
+      <text>{{orderInfo.createDate}}</text>
     </view>
     <view class='order-payment-way'>
       <text class='setting-key'>支付方式</text>
       <text>在线支付</text>
+    </view>
+    <view class='order-remark'>
+      <text class='setting-key'>订单备注</text>
+      <text class='remark-text'>{{orderInfo.notice}}</text>
     </view>
   </view>
 </view>

@@ -1,17 +1,14 @@
 <template name="addressInfo">
-  <view class="address-container {{isTouchMove?'touch-move-active':''}}" data-id="{{name}}" bindtap='changeAddress' bindtouchstart='touchstart' bindtouchmove='touchmove'>
+  <view class="address-container {{isTouchMove?'touch-move-active':''}}" data-id="{{id}}" bindtap='changeAddress' bindtouchstart='touchstart' bindtouchmove='touchmove'>
     <view class='address-item'>
-      <image src="../../images/四月是你的谎言.jpg"></image>
+      <image src="{{imageContainer.edit}}" data-name="edit"></image>
       <view class='address-info-container'>
-        <text>{{name}} {{phone}}</text>
+        <text>{{name}}{{sex==='0'?'女士':'先生'}} {{phone}}</text>
         <text class='address-info-details'>{{address}}</text>
       </view>
-      <block wx:if="{{isSelected}}">
-        <icon class='isSelected-icon' type="success" size="25" color='#7FA0FF' />
-      </block>
     </view>
     <block wx:if="{{isTouchMove}}">
-      <view class='delete-address'>删除</view>
+      <view class='delete-address' data-name="delete">删除</view>
     </block>
   </view>
 </template>
@@ -24,17 +21,19 @@
   </view>
   <view class='body'>
     <block wx:for="{{activeAddressList}}">
-      <template is="addressInfo" data="{{...item}}" />
+      <template is="addressInfo" data="{{imageContainer:imageContainer,...item}}" />
     </block>
-    <block wx:if="{{deactiveAddressList.length}}">
-      <text class='out-of-range-title'>以下地址超出配送范围</text>
-      <block wx:for="{{deactiveAddressList}}">
-        <template is="addressInfo" data="{{...item}}" />
+    <view class='deactive-container'>
+      <block wx:if="{{deactiveAddressList.length}}">
+        <text class='out-of-range-title'>以下地址超出配送范围</text>
+        <block wx:for="{{deactiveAddressList}}">
+          <template is="addressInfo" data="{{imageContainer:imageContainer,...item}}" />
+        </block>
       </block>
-    </block>
+    </view>
   </view>
   <view class='add-new-address' bindtap='addNewAddress'>
-    <text class='add-address-icon'>+</text>
+    <image class='add-address-icon' src="{{imageContainer.add}}" />
     <text>新增收货地址</text>
   </view>
 </view>

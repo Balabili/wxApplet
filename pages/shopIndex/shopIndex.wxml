@@ -1,0 +1,42 @@
+<view class="container">
+  <view class='header'>
+    <image src="{{shopInfo.logoUrl}}"></image>
+    <text class='shop-name'>{{shopInfo.name}}</text>
+    <text class="shop-status {{shopInfo.closeFlag==='0'?'shop-details-status-active':'shop-details-status-deactive'}}">营业中</text>
+  </view>
+  <view class='business-volume'>
+    <view class='today-business-volume'>
+      <text class='business-volume-key'>{{sale}}</text>
+      <text class='business-volume-value'>今日总营业额</text>
+    </view>
+    <view class='business-volume-line-between'></view>
+    <view class='today-orders'>
+      <text class='business-volume-key'>{{orderCount}}</text>
+      <text class='business-volume-value'>今日付款订单</text>
+    </view>
+  </view>
+  <view class='shop-function'>
+    <block wx:for="{{shopFunctions}}">
+      <view class='function' data-id="{{item.id}}" bindtap='viewDetails'>
+        <image src="{{item.image}}"></image>
+        <text>{{item.name}}</text>
+        <block wx-if="{{item.newOrderCount}}">
+          <text class='new-order-count'>{{item.newOrderCount}}</text>
+        </block>
+      </view>
+    </block>
+  </view>
+  <view class='form-count-container'>
+    <view class='bubble-container'>
+      <image class='bubble-image' src='{{imageContainer.bubble}}'></image>
+      <text class='bubble-text'>当前剩余有效次数</text>
+      <text class='bubble-count'>{{validFormIdCount}}次</text>
+    </view>
+    <form bindsubmit="addFormIdCount" report-submit='true'>
+      <button form-type="submit">
+        <image mode='aspectFill' class='fox-image' src='{{imageContainer.fox}}'></image>
+      </button>
+      <text class='click-count'>{{storageFormIdList.length||0}}</text>
+    </form>
+  </view>
+</view>

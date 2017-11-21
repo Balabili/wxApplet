@@ -1,0 +1,27 @@
+.dispatch-range {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  width: 100%;
+  padding: 20rpx 0;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+.dispatch-range-textbox {
+  width: 600rpx;
+  padding-left: 30rpx;
+}
+
+.dispatch-text {
+  margin-right: 30rpx;
+  color: #c1c1c1;
+}
+
+.save-dispatch-range {
+  margin-top: 30rpx;
+  width: 90%;
+  color: #fff;
+}

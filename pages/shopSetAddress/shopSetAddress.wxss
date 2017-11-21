@@ -1,0 +1,50 @@
+.container {
+  padding-top: 20rpx;
+  font-size: 30rpx;
+}
+
+.address-item {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 4rpx;
+}
+
+.address-item-key {
+  width: 150rpx;
+  margin-left: 30rpx;
+}
+
+.address-textbox {
+  width: 500rpx;
+  margin-right: 20rpx;
+  text-align: right;
+}
+
+.address-info {
+  width: 450rpx;
+  text-align: right;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.address-deactive {
+  color: #c1c1c1;
+}
+
+.address-icon {
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 30rpx;
+}
+
+.save-address {
+  width: 95%;
+  margin: 30rpx auto;
+  color: #fff;
+}

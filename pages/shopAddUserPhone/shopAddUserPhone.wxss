@@ -1,0 +1,18 @@
+.phone-container {
+  margin-top: 20rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.phone-textbox {
+  width: 90%;
+  padding: 20rpx 0;
+  padding-left: 30rpx;
+  font-size: 30rpx;
+}
+
+.save-phone {
+  margin-top: 30rpx;
+  width: 95%;
+  color: #fff;
+}

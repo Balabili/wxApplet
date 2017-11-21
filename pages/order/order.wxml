@@ -1,21 +1,21 @@
 <template name="orderDetails">
-  <view class='order-container' bindtap='viewOrderDetails'>
+  <view class='order-container' data-id="{{id}}" bindtap='viewOrderDetails'>
     <view class='image-container'>
-      <image class='order-image' src="{{img}}"></image>
+      <image class='order-image' src="{{img}}" mode='aspectFill' lazy-load="true"></image>
     </view>
     <view class='order-details-container'>
       <view class='order-details-header'>
         <text class='order-details-title'>{{name}}</text>
-        <text class="order-details-status {{status?'':'color-orange'}}">{{status?'已付款':'待付款'}}</text>
+        <text class="order-details-status {{status!=='1'?'':'color-orange'}}">{{status!=='1'?'已付款':'待付款'}}</text>
       </view>
-      <text class='order-details-order-time'>下单时间：{{time}}</text>
+      <text class='order-details-order-time'>下单时间：{{createDate}}</text>
       <view class='order-details-footer'>
         <view>
           <text class='rmb'>￥</text>
-          <text class='commodity-price'>{{price}}</text>
+          <text class='commodity-price'>{{total}}</text>
         </view>
         <view class='operation-container'>
-          <text class="operation-btn {{status?'again-btn':'paynow-btn'}}">{{status?'再来一单':'立即支付'}}</text>
+          <text class="operation-btn {{status!=='1'?'again-btn':'paynow-btn'}}" data-status="{{status}}">{{status!=='1'?'再来一单':'立即支付'}}</text>
         </view>
       </view>
     </view>
@@ -35,8 +35,10 @@
     </view>
   </view>
   <view class='order-list-container'>
-    <block wx:for="{{orderList}}">
-      <template is="orderDetails" data="{{...item}}" />
-    </block>
+    <scroll-view scroll-y style='width:100%;height:990rpx;'>
+      <block wx:for="{{orderList}}">
+        <template is="orderDetails" data="{{...item}}" />
+      </block>
+    </scroll-view>
   </view>
 </view>

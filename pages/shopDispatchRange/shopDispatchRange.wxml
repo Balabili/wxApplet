@@ -1,0 +1,7 @@
+<view class="container">
+  <view class='dispatch-range'>
+    <input class='dispatch-range-textbox' type='digit' value='{{range}}' placeholder='请输入配送范围' placeholder-class='placeholder-class' bindinput='changeRange' bindblur='changeRange'  focus='true'/>
+    <text class='dispatch-text'>米内</text>
+  </view>
+  <button class='save-dispatch-range' type='primary'  bindtap='saveDispatchRange'>完成</button>
+</view>

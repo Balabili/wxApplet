@@ -1,0 +1,118 @@
+.tab-bar {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rpx;
+  margin-bottom: 1rpx;
+  width: 100%;
+  height: 80rpx;
+  background-color: #fff;
+  font-size: 32rpx;
+  color: black;
+}
+
+.tab-active {
+  height: 74rpx;
+  line-height: 70rpx;
+  border-bottom: 6rpx solid #1aad19;
+  color: #1aad19;
+}
+
+.order-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  height: 180rpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.order-count {
+  font-size: 24rpx;
+}
+
+.image-container {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+}
+
+.order-image {
+  height: 150rpx;
+  width: 150rpx;
+}
+
+.complete-img {
+  position: absolute;
+  right: -30rpx;
+  top: 0;
+  height: 140rpx;
+  width: 140rpx;
+}
+
+.order-list-container {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.order-details-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 178rpx;
+  width: 75%;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.order-details-header {
+  display: flex;
+  justify-content: space-between;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.order-details-title {
+  display: inline-block;
+  width: 400rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 32rpx;
+}
+
+.order-details-status {
+  margin-right: 30rpx;
+  font-size: 24rpx;
+  color: #959595;
+}
+
+.order-details-order-time {
+  font-size: 24rpx;
+  color: #959595;
+}
+
+.order-details-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.rmb {
+  font-size: 26rpx;
+  color: #fe484a;
+}
+
+.commodity-price {
+  font-size: 40rpx;
+  color: #fe484a;
+}

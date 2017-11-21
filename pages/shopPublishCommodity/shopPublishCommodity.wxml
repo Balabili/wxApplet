@@ -1,0 +1,62 @@
+<view class="container">
+  <view class='upload-img-container'>
+    <block wx:if="{{selectCommodityLogoRequired}}">
+      <image class='upload-icon' src="{{cameraImage}}" bindtap='uploadCommodityImg'></image>
+      <text>上传商品照片</text>
+    </block>
+    <block wx:else>
+      <view class='image-logo-container'>
+        <swiper class='image-logo-swiper' autoplay indicator-dots indicator-active-color="#1aad19" bindchange='changeImage' current="{{currentIndex}}">
+          <block wx:for="{{imageList}}">
+            <swiper-item>
+              <image class='image-logo' src="{{item}}" mode='aspectFill'></image>
+            </swiper-item>
+          </block>
+        </swiper>
+        <image class='delete-image-icon' src='{{deleteImage}}' bindtap='deleteImage' />
+        <image class='add-image-icon' src="{{cameraImage}}" bindtap='addImage'></image>
+      </view>
+    </block>
+  </view>
+  <view class='add-commodity-title'>
+    <input class='commodity-textbox' type='text' value='{{commodityTitle}}' placeholder='请输入商品标题' placeholder-class='placeholder-class' bindinput='changeTitle' bindblur='setTitle' cursor-spacing="90" />
+    <text class='commodity-title-length'>{{length||0}}/15</text>
+  </view>
+  <view class='commodity-details-container'>
+    <view class='commodity-details-item' bindtap='addCommodityKind'>
+      <text class='commodity-details-key'>商品分类</text>
+      <text class='commodity-details-value'>{{kind.name}}</text>
+      <image class='add-commodity-details' src='{{viewDetailsimage}}' />
+    </view>
+    <view class='commodity-details-item'>
+      <text class='commodity-details-key'>商品价格</text>
+      <input class='commodity-price-textbox' type='digit' value='{{price}}' placeholder='请输入价格' cursor-spacing="30" placeholder-class='placeholder-class' bindinput='addPrice' bindblur='addPrice' />
+    </view>
+    <view class='commodity-details-item'>
+      <text class='commodity-details-key'>商品规格</text>
+      <input class='commodity-specification-textbox' type='text' value='{{specification}}' placeholder='例：200g*24/箱' placeholder-class='placeholder-class' bindinput='addSpecification' bindblur='addSpecification' cursor-spacing="30" />
+    </view>
+    <view class='commodity-details-item' bindtap='addCommodityNumber'>
+      <text class='commodity-details-key'>商品编号</text>
+      <text class='commodity-details-value'>{{code}}</text>
+      <image class='add-commodity-details' src='{{viewDetailsimage}}' />
+    </view>
+    <view class='commodity-details-item' bindtap='addCommodityDescription'>
+      <text class='commodity-details-key'>商品描述</text>
+      <text class='commodity-details-value'>{{description}}</text>
+      <image class='add-commodity-details' src='{{viewDetailsimage}}' />
+    </view>
+  </view>
+  <view class='add-new-address' bindtap='putawayCommodity'>
+    <text>{{commodityId?'保存':'上架商品'}}</text>
+  </view>
+
+  <action-sheet hidden="{{hidePhotoActionSheet}}" bindchange="listenerActionSheet">
+    <action-sheet-item data-name="album" bindtap="chooseImg">从相册选择</action-sheet-item>
+    <action-sheet-item data-name="camera" bindtap="chooseImg">拍照</action-sheet-item>
+    <block wx:if="{{selectCommodityLogoRequired}}">
+      <action-sheet-item bindtap="chooseImg">扫码识别商品</action-sheet-item>
+    </block>
+    <action-sheet-cancel>取消</action-sheet-cancel>
+  </action-sheet>
+</view>

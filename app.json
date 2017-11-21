@@ -1,20 +1,41 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/businessDetails/businessDetails",
-    "pages/settleAccount/settleAccount",
-    "pages/selectAddress/selectAddress",
-    "pages/addRemark/addRemark",
-    "pages/orderDetails/orderDetails",
-    "pages/addAddress/addAddress",
+    "pages/search/search",
+    "pages/shopIndex/shopIndex",
     "pages/order/order",
-    "pages/userInfo/userInfo"
+    "pages/orderDetails/orderDetails",
+    "pages/userInfo/userInfo",
+    "pages/selectAddress/selectAddress",
+    "pages/addAddress/addAddress",
+    "pages/commodityList/commodityList",
+    "pages/settleAccount/settleAccount",
+    "pages/addRemark/addRemark",
+    "pages/commodityKind/commodityKind",
+    "pages/shopAddCommodityKind/shopAddCommodityKind",
+    "pages/shopAddCommodityNumber/shopAddCommodityNumber",
+    "pages/shopAddNewCommodityKind/shopAddNewCommodityKind",
+    "pages/shopAddNotice/shopAddNotice",
+    "pages/shopAddUserName/shopAddUserName",
+    "pages/shopAddUserPhone/shopAddUserPhone",
+    "pages/shopDispatchPrice/shopDispatchPrice",
+    "pages/shopDispatchRange/shopDispatchRange",
+    "pages/shopManageCommodity/shopManageCommodity",
+    "pages/shopOrders/shopOrders",
+    "pages/shopOrderDetails/shopOrderDetails",
+    "pages/shopPublishCommodity/shopPublishCommodity",
+    "pages/shopSetAddress/shopSetAddress",
+    "pages/shopSetShopName/shopSetShopName",
+    "pages/shopSetting/shopSetting",
+    "pages/shopStatistics/shopStatistics",
+    "pages/shopSearch/shopSearch",
+    "pages/shopAddCommodityDescription/shopAddCommodityDescription",
+    "pages/commodityDetail/commodityDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "零售宝",
+    "navigationBarTitleText": "阔狐零售商城展示",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -22,19 +43,27 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/c_home_1_grery.png",
+        "selectedIconPath": "images/c_home_1_green.png"
       },
       {
-        "pagePath": "pages/index/index",
-        "text": "分类"
+        "pagePath": "pages/commodityKind/commodityKind",
+        "text": "分类",
+        "iconPath": "images/c_classify_2_grey.png",
+        "selectedIconPath": "images/c_classify_2_green.png"
       },
       {
         "pagePath": "pages/order/order",
-        "text": "订单"
+        "text": "订单",
+        "iconPath": "images/c_order_3_grey.png",
+        "selectedIconPath": "images/c_order_3_green.png"
       },
       {
         "pagePath": "pages/userInfo/userInfo",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "images/c_me_4_grey.png",
+        "selectedIconPath": "images/c_me_4_green.png"
       }
     ]
   }

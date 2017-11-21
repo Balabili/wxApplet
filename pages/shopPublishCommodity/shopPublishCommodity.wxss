@@ -1,0 +1,147 @@
+.upload-img-container {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rpx;
+  width: 100%;
+  min-height: 260rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+.image-logo-container {
+  position: relative;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.image-logo-swiper {
+  width: 750rpx;
+  height: 750rpx;
+}
+
+.image-logo {
+  height: 750rpx;
+  width: 750rpx;
+}
+
+.add-image-icon {
+  position: absolute;
+  bottom: 50rpx;
+  right: 50rpx;
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.delete-image-icon {
+  position: absolute;
+  top: 50rpx;
+  right: 50rpx;
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.upload-icon {
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.add-commodity-title {
+  position: relative;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  height: 120rpx;
+  width: 100%;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+.commodity-price-textbox {
+  width: 500rpx;
+  color: #e03647;
+  margin-right: 30rpx;
+  text-align: right;
+}
+
+.commodity-specification-textbox {
+  width: 500rpx;
+  margin-right: 30rpx;
+  text-align: right;
+}
+
+.commodity-title-length {
+  position: absolute;
+  bottom: 10rpx;
+  right: 30rpx;
+  color: #c1c1c1;
+}
+
+.commodity-details-container {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-bottom: 100rpx;
+  width: 100%;
+  font-size: 30rpx;
+}
+
+.commodity-details-item {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rpx;
+  width: 100%;
+  height: 88rpx;
+  background-color: #fff;
+}
+
+.commodity-details-key {
+  display: inline-block;
+  margin-left: 30rpx;
+  width: 150rpx;
+}
+
+.commodity-details-value {
+  display: inline-block;
+  text-align: right;
+  width: 500rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.add-commodity-details {
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
+}
+
+.commodity-textbox {
+  width: 500rpx;
+  margin-left: 30rpx;
+}
+
+.add-new-address {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  background-color: #1aad19;
+  color: #fff;
+  z-index: 999;
+}

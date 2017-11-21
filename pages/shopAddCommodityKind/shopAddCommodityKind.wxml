@@ -1,0 +1,16 @@
+<view class="container">
+  <view class='kind-container'>
+    <block wx:for="{{kindList}}">
+      <view class="kind-item {{item.isTouchMove?'touch-move-active':''}}" data-id="{{item.id}}" bindtap='selectKind' bindtouchstart='touchstart' bindtouchmove='touchmove'>
+        <text class='kind-name'>{{item.name}}</text>
+        <block wx:if="{{item.isTouchMove}}">
+          <view class='delete-kind' data-name="delete">删除</view>
+        </block>
+      </view>
+    </block>
+    <view class='add-new-address' bindtap='addNewCommodityKind'>
+      <image class='add-address-icon' src="{{imageContainer.add}}" />
+      <text>添加新的商品分类</text>
+    </view>
+  </view>
+</view>

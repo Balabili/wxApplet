@@ -1,0 +1,80 @@
+<view class='container'>
+  <view class='shop-info'>
+    <view class='shop-info-header'>
+      <text style='margin-left:30rpx;'>店铺信息</text>
+    </view>
+    <view class='shop-item shop-logo' bindtap='changeLogo'>
+      <text class='key'>商店logo</text>
+      <view class='value logo-value'>
+        <image class='value-image' mode='aspectFill' src="{{shopInfo.logoUrl}}"></image>
+      </view>
+      <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+    </view>
+    <view class='shop-item' bindtap='addShopName'>
+      <text class='key'>店铺名称</text>
+      <text class='value'>{{shopInfo.name}}</text>
+      <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+    </view>
+    <picker mode="multiSelector" bindchange="saveOpenDuration" value="{{openDurationIndex}}" range="{{openDuration}}">
+      <view class='shop-item'>
+        <text class='key'>营业时间段</text>
+        <text class='value'>{{openDuration[0][openDurationIndex[0]]}}~{{openDuration[1][openDurationIndex[1]]}}</text>
+        <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+      </view>
+    </picker>
+    <view class='shop-item' bindtap='addShopAddress'>
+      <text class='key'>店铺地址</text>
+      <text class='value'>{{shopInfo.lsbShopAddress.address}}</text>
+      <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+    </view>
+    <view class='shop-item' bindtap='addUserPhone'>
+      <text class='key'>联系电话</text>
+      <text class='value'>{{shopInfo.phone}}</text>
+      <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+    </view>
+    <view class='shop-item' bindtap='addUserName'>
+      <text class='key'>联系人</text>
+      <text class='value'>{{shopInfo.linkman}}</text>
+      <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+    </view>
+  </view>
+  <view class='dispatch-info'>
+    <view class='dispatch-info-header'>
+      <text style='margin-left:30rpx;'>配送信息</text>
+    </view>
+    <picker mode="multiSelector" bindchange="saveDispatchDuration" value="{{dispatchDurationIndex}}" range="{{dispatchDuration}}">
+      <view class='dispatch-item' bindtap='setDuration'>
+        <text class='key'>配送时间段</text>
+        <text class='value'>{{dispatchDuration[0][dispatchDurationIndex[0]]}}~{{dispatchDuration[1][dispatchDurationIndex[1]]}}</text>
+        <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+      </view>
+    </picker>
+    <view class='dispatch-item' bindtap='addDispatchRange'>
+      <text class='key'>配送范围</text>
+      <text class='value'>{{shopInfo.serviceRange}}</text>
+      <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+    </view>
+    <picker bindchange="selectDispatchTime" value="{{dispatchIndex}}" range="{{dispatchTime}}">
+      <view class='dispatch-item'>
+        <text class='key'>配送时长</text>
+        <text class='value'>{{selectDispatchTime}}分钟</text>
+        <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+      </view>
+    </picker>
+    <view class='dispatch-item' bindtap='addDispatchPrice'>
+      <text class='key'>起送价格</text>
+      <text class='value'>{{shopInfo.servicePrice}}</text>
+      <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+    </view>
+    <view class='dispatch-item' bindtap='addNotice'>
+      <text class='key'>店铺公告</text>
+      <text class='value'>{{shopInfo.notice}}</text>
+      <image class='view-details-img' src="{{viewDetailsImg}}"></image>
+    </view>
+  </view>
+  <action-sheet hidden="{{hidePhotoActionSheet}}" bindchange="listenerActionSheet">
+    <action-sheet-item data-name="album" bindtap="chooseImg">从相册选择</action-sheet-item>
+    <action-sheet-item data-name="camera" bindtap="chooseImg">拍照</action-sheet-item>
+    <action-sheet-cancel>取消</action-sheet-cancel>
+  </action-sheet>
+</view>

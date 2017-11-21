@@ -1,0 +1,6 @@
+<view class="container">
+  <view class='price-container'>
+    <input class='price-textbox' type='digit' value='{{price}}' placeholder='请输入起送价格' placeholder-class='placeholder-class' bindinput='changePrice' bindblur='changePrice' focus='true' />
+  </view>
+  <button class='save-price' type='primary'  bindtap='saveShopPrice'>完成</button>
+</view>

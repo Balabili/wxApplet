@@ -1,0 +1,6 @@
+<view class="container">
+  <view class='shop-container'>
+    <input class='shop-textbox' type='text' value='{{shopName}}' placeholder='请输入您的店铺名称' placeholder-class='placeholder-class' bindinput='changeText' bindblur='changeText'  focus='true' />
+  </view>
+  <button class='save-shop-name' type='primary' bindtap='saveShopName'>完成</button>
+</view>
